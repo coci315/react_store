@@ -1,0 +1,24 @@
+.m-list {
+  h2 {
+    height: 33px;
+    padding: 0 20px;
+    line-height: 34px;
+    font-size: 12px;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  li {
+    height: 34px;
+    padding: 0 20px;
+    line-height: 34px;
+    font-size: 14px;
+    color: #888;
+    cursor: pointer;
+    transition: all .2s;
+    &.z-sel {
+      margin-left: 1px;
+      padding-right: 19px;
+      background-color: #f5f5f5;
+    }
+  }
+}

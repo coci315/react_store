@@ -11,6 +11,7 @@ module.exports = {
     entry: path.resolve(__dirname, 'src/index.jsx'),
     output: {
         path: __dirname + "/build",
+        publicPath: '/',
         filename: "bundle.js"
     },
 
@@ -27,7 +28,7 @@ module.exports = {
             { test: /\.(js|jsx)$/, exclude: /node_modules/, loader: 'babel' },
             { test: /\.scss$/, exclude: /node_modules/, loader: 'style!css!postcss!sass' },
             { test: /\.css$/, exclude: /node_modules/, loader: 'style!css!postcss' },
-            { test:/\.(png|gif|jpg|jpeg|bmp)$/i, loader:'url-loader?limit=5000' },  // 限制大小5kb
+            { test:/\.(png|gif|jpg|jpeg|bmp)$/i, loader:'url-loader?limit=1&name=resource/[name].[ext]' },  // 限制大小5kb
             { test:/\.(png|woff|woff2|svg|ttf|eot)($|\?)/i, loader:'url-loader?limit=5000'} // 限制大小小于5k
         ]
     },

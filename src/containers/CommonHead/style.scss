@@ -1,0 +1,137 @@
+.common-head {
+  .m-logo {
+    width: 290px;
+    height: 70px;
+    a {
+      display: inline-block;
+      width: 290px;
+      height: 70px;
+      background-position: 0px -48px;
+    }
+  }
+  .m-search {
+    width: 300px;
+    height: 70px;
+    margin-left: 334px;
+    .inputwrap {
+      width: 300px;
+      height: 54px;
+      padding-top: 16px;
+    }
+    .wrap {
+      position: absolute;
+      z-index: 999;
+      top: 56px;
+      width: 300px;
+      height: auto;
+      background-color: #fff;
+      box-shadow: 0 4px 7px #555;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+    }
+  }
+  .m-shopcar {
+    width: 36px;
+    height: 36px;
+    margin: 17px 0 0 41px;
+    a {
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      background-position: -110px -158px;
+      cursor: pointer;
+    }
+    .num {
+      top: -8px;
+      left: 26px;
+      width: 18px;
+      height: 18px;
+      line-height: 18px;
+      text-align: center;
+      color: #fff;
+      background-position: -156px -158px;
+    }
+  }
+  .m-user {
+    width: 62px;
+    height: 36px;
+    margin: 15px 0 0 37px;
+    background: url(http://s2.music.126.net/store/web/img/arrow-d.png?5782a9a18482dbd390ef64eb705cca74) no-repeat 110% center;
+    &:hover {
+      background: url(http://s2.music.126.net/store/web/img/arrow-u.png?96200be0591592c2fa86c2d7813eb3a6) no-repeat 110% center;
+    }
+  }
+  .m-select {
+    z-index: 99;
+    width: 62px;
+    height: 36px;
+    .login {
+      width: 36px;
+      height: 36px;
+      line-height: 36px;
+      text-align: center;
+      font-size: 14px;
+    }
+    ul {
+      position: absolute;
+      z-index: 100;
+      top: 54px;
+      left: -61px;
+      width: 160px;
+      height: auto;
+      box-shadow: 0 4px 7px #555;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+      li {
+        padding-left: 24px;
+        font-size: 12px;
+        color: #333;
+        background-color: #fff;
+        &:hover {
+          background-color: #f5f5f5;
+        }
+      }
+      a {
+        display: block;
+        width: 134px;
+        padding-left: 1px;
+        height: 40px;
+        line-height: 40px;
+      }
+      em {
+        display: inline-block;
+        position: relative;
+        top: 4px;
+        width: 18px;
+        height: 18px;
+        margin-right: 9px;
+      }
+      .phone {
+        height: 16px;
+        background: url(http://s2.music.126.net/store/web/img/phonelog.png?510c12f95ca7b291c884e71c5a975161) no-repeat;
+      }
+      .wechat {
+        height: 16px;
+        background-position: -84px -0px;
+      }
+      .qq {
+        height: 16px;
+        background-position: -112px -0px;
+      }
+      .sina {
+        height: 16px;
+        background: url(http://s2.music.126.net/store/web/img/sina.png?c74d7d5bacd49279136be345c1c0d696) no-repeat;
+      }
+      .netease {
+        background: url(http://s2.music.126.net/store/web/img/netease.png?e099e28e7ed5e78f82d57a241b4770a0) no-repeat;
+      }
+    }
+    .arr {
+      position: absolute;
+      top: 36px;
+      left: -61px;
+      z-index: 100;
+      width: 160px;
+      height: 18px;
+      background-position: 0px -128px;
+    }
+  }
+}
