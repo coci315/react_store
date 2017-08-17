@@ -3,6 +3,7 @@ import { Router, Route, IndexRoute } from 'react-router'
 
 import App from '../containers/App'
 import Home from '../containers/Home/Home'
+import Search from '../containers/Search/Search'
 import Detail from '../containers/Detail/Detail'
 import NotFound from '../containers/NotFound/NotFound'
 
@@ -11,9 +12,10 @@ class RouterMap extends React.Component {
         return (
             <Router history={this.props.history}>
                 <Route path='/' component={App}>
-                    <IndexRoute component={Home}/>
-                    <Route path='/detail/:id' component={Detail}/>
-                    <Route path='*' component={NotFound}/>
+                    <IndexRoute component={Home} />
+                    <Route path='/search' component={Search} />
+                    <Route path='/detail/:id' component={Detail} />
+                    <Route path='*' component={NotFound} />
                 </Route>
             </Router>
         )

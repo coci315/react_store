@@ -1,9 +1,10 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
-import { Link } from 'react-router'
-import { getSearchSuggest } from '../../api/api.js'
+import { Link, browserHistory } from 'react-router'
+import { getSearchSuggest, getSearchWord } from '../../api/api.js'
 import SearchInput from '../../components/SearchInput/SearchInput'
 import List from '../../components/List/List'
+import SuggestList from '../../components/SuggestList/SuggestList'
 import { loadSearchHistory, addSearchHistory, delSearchHistory } from '../../common/js/cache.js'
 
 import './style.scss'
@@ -17,7 +18,10 @@ class CommonHead extends React.Component {
       configKey: [],
       searchHistory: [],
       showList: false,
-      showMenu: false
+      showMenu: false,
+      searchWord: '',
+      suggestWord: [],
+      searchInputValue: ''
     }
   }
 
@@ -28,23 +32,28 @@ class CommonHead extends React.Component {
     const historyItems = this._formatArray(searchHistory)
     const showMenu = this.state.showMenu
 
+    const { showList, searchWord, suggestWord, searchInputValue } = this.state
     let list = null
-    if (this.state.showList) {
-      list = (<div>
-        <div className="f-shadow"></div>
-        <List title="热门搜索"
-          items={hotItems}
-          clickHandle={this.onHotListClick.bind(this)}
-        />
-        {
-          historyItems.length ? (<List title="最近搜索"
-            items={historyItems}
-            clickHandle={this.onHotListClick.bind(this)}
-            delMode={true}
-            delHandle={this.onHistoryListDel.bind(this)}
-          />) : ''
-        }
-      </div>)
+    if (showList) {
+      if (!searchWord) {
+        list = (<div>
+          <div className="f-shadow"></div>
+          <List title="热门搜索"
+            items={hotItems}
+            clickHandle={this.goSearch.bind(this)}
+          />
+          {
+            historyItems.length ? (<List title="最近搜索"
+              items={historyItems}
+              clickHandle={this.goSearch.bind(this)}
+              delMode={true}
+              delHandle={this.onHistoryListDel.bind(this)}
+            />) : ''
+          }
+        </div>)
+      } else {
+        list = (suggestWord.length ? <SuggestList word={searchWord} items={suggestWord} clickHandle={this.goSearch.bind(this)} /> : '')
+      }
     }
     return (
       <div className="common-head f-cb clearfix">
@@ -57,7 +66,10 @@ class CommonHead extends React.Component {
           }}>
             <SearchInput placeholder={this.state.defaultKey}
               focusHandle={this.onSearchInputFocus.bind(this)}
-              blurHandle={this.onSearchInputBlur.bind(this)}
+              inputHandle={this.onSearchInputInput.bind(this)}
+              enterHandle={this.goSearch.bind(this)}
+              value={searchInputValue}
+              ref={(input) => { this.searchInput = input }}
             />
           </div>
           <div className="wrap" onClick={(e) => {
@@ -123,8 +135,24 @@ class CommonHead extends React.Component {
     this.showList()
   }
 
-  onSearchInputBlur() {
-    // this.hideList()
+  onSearchInputInput(value) {
+    getSearchWord(value).then(res => {
+      console.log(res)
+      const searchWord = res.data.parse_q
+      const suggestWord = res.data.result.map(i => i.name)
+      this.setState({
+        searchWord,
+        suggestWord
+      })
+    })
+  }
+
+  goSearch(value) {
+    browserHistory.push('/search?q=' + value)
+    addSearchHistory(value)
+    this._loadSearchHistory()
+    this.hideList()
+    this.searchInput.setValue(value)
   }
 
   showList() {

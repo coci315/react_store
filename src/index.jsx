@@ -1,11 +1,11 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { hashHistory } from 'react-router'
+import { browserHistory } from 'react-router'
 
 import './common/scss/index.scss'
 import RouteMap from './router/RouterMap'
 
 render(
-    <RouteMap history={hashHistory}/>,
+    <RouteMap history={browserHistory} />,
     document.getElementById('root')
 )

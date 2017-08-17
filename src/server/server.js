@@ -2,16 +2,31 @@ var express = require('express')
 var axios = require('axios')
 
 const baseUrl = 'http://music.163.com/store/api/'
+const headers = {
+  referer: 'http://music.163.com/store/product',
+  host: 'music.163.com'
+}
 
-function getSearchSuggest () {
+
+function getSearchSuggest() {
   const url = baseUrl + 'searchsuggest/get'
-  const headers = {
-    referer: 'http://music.163.com/store/product',
-    host: 'music.163.com'
-  }
 
   return axios.get(url, {
     headers
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
+function getSearchWord(key) {
+  const url = baseUrl + 'searchsuggest/search'
+  const params = {
+    key
+  }
+
+  return axios.get(url, {
+    headers,
+    params
   }).then(res => {
     return Promise.resolve(res.data)
   })
@@ -22,8 +37,15 @@ var port = process.env.PORT || 3000
 var app = express()
 var apiRoutes = express.Router()
 
-apiRoutes.get('/searchsuggest/get', function(req, res) {
+apiRoutes.get('/searchsuggest/get', function (req, res) {
   getSearchSuggest().then(data => {
+    res.json(data)
+  })
+})
+
+apiRoutes.get('/searchsuggest/search', function (req, res) {
+  const key = req.query.key
+  getSearchWord(key).then(data => {
     res.json(data)
   })
 })

@@ -15,16 +15,25 @@ class SearchInput extends React.Component {
 
   render() {
     return (
-      <form action="" className="search-input f-sprite">
+      <form action="" className="search-input f-sprite" onSubmit={e => {
+        e.preventDefault()
+      }}>
         <input type="text"
           placeholder={this.props.placeholder}
           value={this.state.value}
           onInput={this.inputHandle.bind(this)}
           onFocus={this.focusHandle.bind(this)}
           onBlur={this.blurHandle.bind(this)}
+          onKeyUp={this.keyUpHandle.bind(this)}
         />
       </form>
     )
+  }
+
+  componentDidMount() {
+    this.setState({
+      value: this.props.value
+    })
   }
 
   inputHandle(e) {
@@ -43,16 +52,32 @@ class SearchInput extends React.Component {
     this.props.blurHandle && this.props.blurHandle()
   }
 
+  keyUpHandle(e) {
+    e.stopPropagation()
+    e.preventDefault()
+    if (e.keyCode !== 13) return
+    this.props.enterHandle && this.props.enterHandle(e.target.value)
+  }
+
+  setValue(v) {
+    this.setState({
+      value: v
+    })
+  }
+
 }
 
 SearchInput.propTypes = {
   placeholder: PropTypes.string,
   inputHandle: PropTypes.func,
-  focusHandle: PropTypes.func
+  focusHandle: PropTypes.func,
+  enterHandle: PropTypes.func,
+  value: PropTypes.string
 }
 
 SearchInput.defaultProps = {
-  placeholder: ''
+  placeholder: '',
+  value: ''
 }
 
 export default SearchInput
