@@ -1,0 +1,43 @@
+.common-foot {
+  height: 120px;
+  background-color: #f2f2f2;
+  .copyright {
+    width: 490px;
+    padding-top: 35px;
+    line-height: 24px;
+    a:hover {
+      text-decoration: underline;
+    }
+    .line {
+      margin: 0 8px 0 10px;
+      color: #c2c2c2;
+    }
+    .sep {
+      margin-right: 14px;
+    }
+  }
+  .enter {
+    width: 330px;
+    margin-top: 30px;
+    .logo {
+      float: left;
+      width: 60px;
+      height: 70px;
+      margin-left: 30px;
+      background: url(http://s2.music.126.net/store/web/img/foot_enter.png?e8f132d9b11f77050362f13d164b65ab) no-repeat;
+    }
+    .logo-musician {
+      background-position: -60px -80px;
+      margin-left: 0;
+    }
+    .logo-topic {
+      background-position: 0 -80px;
+    }
+    .logo-media {
+      background-position: 0 0;
+    }
+    .logo-reward {
+      background-position: -60px 0;
+    }
+  }
+}
