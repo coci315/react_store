@@ -21,13 +21,13 @@ class ProductList extends React.Component {
             products.map((item, index) => {
               return (
                 <li key={item.id} className={(index + 1) % 4 === 0 ? "nopad" : ""}>
-                  <Link to={'/detail/' + item.productId} className="cover f-pr">
-                    <img src={item.products.coverUrl} alt={item.name} />
+                  <Link to={'/detail/' + item.id} className="cover f-pr">
+                    <img src={item.coverUrl} alt={item.name} />
                     {
-                      item.products.tags.indexOf('特价') > -1 ? (
+                      item.tags.indexOf('特价') > -1 ? (
                         <span className="spec f-pa">
-                          <span className="origin f-pa">￥{item.products.minPrice}</span>
-                          <span className="cut f-pa"><del>￥{item.products.originalCost}</del></span>
+                          <span className="origin f-pa">￥{item.minPrice}</span>
+                          <span className="cut f-pa"><del>￥{item.originalCost}</del></span>
                         </span>
                       ) : ''
                     }
@@ -35,7 +35,7 @@ class ProductList extends React.Component {
                   <div className="cnt f-tc">
                     <h3 className="f-thide2">
                       {
-                        item.products.tags.map(tag => {
+                        item.tags.map(tag => {
                           return (
                             <span className="tag tag-red" key={tag}><em>{tag}</em></span>
                           )
@@ -43,7 +43,10 @@ class ProductList extends React.Component {
                       }
                       {' ' + item.name}
                     </h3>
-                    <p className="txt f-thide">￥<em>{item.products.minPrice}</em></p>
+                    <p className="txt f-thide">
+                      ￥<em>{item.minPrice}</em>
+                      {item.vipMinPrice !== undefined ? <em className="vip">(豪华会员￥{item.vipMinPrice})</em> : ''}
+                    </p>
                   </div>
                 </li>
               )
