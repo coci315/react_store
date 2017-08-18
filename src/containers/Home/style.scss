@@ -1,0 +1,23 @@
+.m-home {
+  .g-tab {
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .g-bd {
+    min-height: 750px;
+    background: #fff;
+  }
+  .g-main {
+    width: 100%;
+  }
+  .m-block {
+    margin-top: 50px;
+    .mid-txt {
+      font-size: 24px;
+      color: #333;
+    }
+    .mid-bold {
+      font-weight: bold;
+    }
+  }
+}

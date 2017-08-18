@@ -137,7 +137,7 @@ class CommonHead extends React.Component {
 
   onSearchInputInput(value) {
     getSearchWord(value).then(res => {
-      console.log(res)
+      // console.log(res)
       const searchWord = res.data.parse_q
       const suggestWord = res.data.result.map(i => i.name)
       this.setState({
@@ -181,7 +181,7 @@ class CommonHead extends React.Component {
 
   _getSearchSuggest() {
     getSearchSuggest().then(res => {
-      console.log(res)
+      // console.log(res)
       const { defaultKey, configKey } = res.data
       this.setState({
         defaultKey,

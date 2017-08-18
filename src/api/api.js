@@ -1,6 +1,7 @@
 import axios from 'axios'
 const baseUrl = '/api/'
 
+// 获取热门搜索词
 export function getSearchSuggest() {
   const url = baseUrl + 'searchsuggest/get'
 
@@ -9,10 +10,40 @@ export function getSearchSuggest() {
   })
 }
 
+// 获取搜索建议
 export function getSearchWord(key) {
   const url = baseUrl + 'searchsuggest/search'
   const params = {
     key
+  }
+
+  return axios.get(url, {
+    params
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
+// 获取轮播图
+export function getBanner(type = 0) {
+  const url = baseUrl + 'product/ipbanner'
+  const params = {
+    type
+  }
+
+  return axios.get(url, {
+    params
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
+// 获取商品
+export function getHotCommonProduct(limit = 60, offset = 0) {
+  const url = baseUrl + 'hotcommonProduct/gets'
+  const params = {
+    limit,
+    offset
   }
 
   return axios.get(url, {

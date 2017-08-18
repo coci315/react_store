@@ -32,6 +32,35 @@ function getSearchWord(key) {
   })
 }
 
+function getBanner(type) {
+  const url = baseUrl + 'product/ipbanner'
+  const params = {
+    type
+  }
+
+  return axios.get(url, {
+    headers,
+    params
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
+function getHotCommonProduct(limit, offset) {
+  const url = baseUrl + 'hotcommonProduct/gets'
+  const params = {
+    limit,
+    offset
+  }
+
+  return axios.get(url, {
+    headers,
+    params
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
 var port = process.env.PORT || 3000
 
 var app = express()
@@ -46,6 +75,20 @@ apiRoutes.get('/searchsuggest/get', function (req, res) {
 apiRoutes.get('/searchsuggest/search', function (req, res) {
   const key = req.query.key
   getSearchWord(key).then(data => {
+    res.json(data)
+  })
+})
+
+apiRoutes.get('/product/ipbanner', function (req, res) {
+  const type = req.query.type
+  getBanner(type).then(data => {
+    res.json(data)
+  })
+})
+
+apiRoutes.get('/hotcommonProduct/gets', function (req, res) {
+  const { limit, offset } = req.query
+  getHotCommonProduct(limit, offset).then(data => {
     res.json(data)
   })
 })

@@ -1,0 +1,81 @@
+.m-product {
+  .list {
+    margin-top: 20px;
+    width: 100%;
+    height: auto;
+    li {
+      float: left;
+      position: relative;
+      width: 263px;
+      height: 382px;
+      padding-right: 16px;
+      &.nopad {
+        padding-right: 0;
+      }
+    }
+  }
+  .cover {
+    display: block;
+    width: 263px;
+    height: 263px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    img {
+      display: block;
+      width: 263px;
+      height: 263px;
+    }
+    .spec {
+      width: 60px;
+      height: 60px;
+      top: 10px;
+      left: 10px;
+      background-color: #d33a31;
+      border-radius: 50%;
+      color: #fff;
+      .origin {
+        top: 12px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 15px;
+      }
+      .cut {
+        top: 30px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 13px;
+        opacity: 0.7;
+      }
+    }
+  }
+  .cnt {
+    margin-top: 10px;
+    h3 {
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: normal;
+      color: #333;
+    }
+    p {
+      padding-top: 4px;
+    }
+    .txt {
+      font-size: 16px;
+      color: #d33a31;
+    }
+  }
+  .tag {
+    overflow: hidden;
+    box-sizing: border-box;
+    line-height: 19px;
+    padding: 0 3px;
+    border-radius: 1px;
+    color: #d74d45;
+    font-size: 12px;
+  }
+  .tag-red {
+    border: 1px solid #d74d45;
+  }
+}
