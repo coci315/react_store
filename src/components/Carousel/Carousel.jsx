@@ -74,6 +74,10 @@ class Carousel extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    clearInterval(this.timer)
+  }
+
   setCurIndex(index) {
     this.setState({
       curIndex: index

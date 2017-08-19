@@ -82,3 +82,20 @@ export function getSaleAlbum(limit = 60, offset = 0) {
     return Promise.resolve(res.data)
   })
 }
+
+// 获取专题商品
+export function getColumnProduct(specialTopicId, limit = 60, offset = 0, count = true) {
+  const url = baseUrl + 'special/getdetail'
+  const params = {
+    limit,
+    offset,
+    specialTopicId,
+    count
+  }
+
+  return axios.get(url, {
+    params
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}

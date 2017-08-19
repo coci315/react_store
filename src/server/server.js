@@ -61,6 +61,23 @@ function getHotCommonProduct(limit, offset) {
   })
 }
 
+function getColumnProduct(limit, offset, specialTopicId, count) {
+  const url = baseUrl + 'special/getdetail'
+  const params = {
+    limit,
+    offset,
+    specialTopicId,
+    count
+  }
+
+  return axios.get(url, {
+    headers,
+    params
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
 /* ********************************** */
 const baseUrl_2 = 'http://music.163.com/api/'
 const headers_2 = {
@@ -130,6 +147,15 @@ apiRoutes.get('/hotcommonProduct/gets', function (req, res) {
     res.json(data)
   })
 })
+
+apiRoutes.get('/special/getdetail', function (req, res) {
+  const { limit, offset, specialTopicId, count } = req.query
+  getColumnProduct(limit, offset, specialTopicId, count).then(data => {
+    res.json(data)
+  })
+})
+
+/* ********************************** */
 
 apiRoutes.get('/vipmall/albumproduct/list', function (req, res) {
   const { limit, offset } = req.query

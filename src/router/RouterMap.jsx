@@ -7,6 +7,7 @@ import Search from '../containers/Search/Search'
 import Detail from '../containers/Detail/Detail'
 import NotFound from '../containers/NotFound/NotFound'
 import Dgalbum from '../containers/Dgalbum/Dgalbum'
+import Column from '../containers/Column/Column'
 
 class RouterMap extends React.Component {
     render() {
@@ -16,6 +17,7 @@ class RouterMap extends React.Component {
                     <IndexRoute component={Home} />
                     <Route path='/search' component={Search} />
                     <Route path='/dgalbum' component={Dgalbum} />
+                    <Route path='/column' component={Column} />
                     <Route path='/detail/:id' component={Detail} />
                     <Route path='*' component={NotFound} />
                 </Route>

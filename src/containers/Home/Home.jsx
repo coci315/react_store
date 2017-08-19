@@ -81,7 +81,7 @@ class Home extends React.Component {
 
   _getHotCommonProduct() {
     getHotCommonProduct().then(res => {
-      console.log(res)
+      // console.log(res)
       let { hotProduct, allProduct } = res.data
       hotProduct = this._formatHotProduct(hotProduct)
       allProduct = this._formatAllProduct(allProduct)
