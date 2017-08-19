@@ -99,3 +99,26 @@ export function getColumnProduct(specialTopicId, limit = 60, offset = 0, count =
     return Promise.resolve(res.data)
   })
 }
+
+// 获取商品详情
+export function getProductDetail(id) {
+  const url = baseUrl + 'product/detail'
+  const params = {
+    id
+  }
+
+  return axios.get(url, {
+    params
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
+// 获取热门商品
+export function getHotProduct() {
+  const url = baseUrl + 'hotproduct/gets'
+
+  return axios.get(url).then(res => {
+    return Promise.resolve(res.data)
+  })
+}

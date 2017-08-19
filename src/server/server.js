@@ -78,6 +78,30 @@ function getColumnProduct(limit, offset, specialTopicId, count) {
   })
 }
 
+function getProductDetail(id) {
+  const url = baseUrl + 'product/detail'
+  const params = {
+    id
+  }
+
+  return axios.get(url, {
+    headers,
+    params
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
+function getHotProduct() {
+  const url = baseUrl + 'hotproduct/gets'
+
+  return axios.get(url, {
+    headers
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
 /* ********************************** */
 const baseUrl_2 = 'http://music.163.com/api/'
 const headers_2 = {
@@ -155,6 +179,18 @@ apiRoutes.get('/special/getdetail', function (req, res) {
   })
 })
 
+apiRoutes.get('/product/detail', function (req, res) {
+  const { id } = req.query
+  getProductDetail(id).then(data => {
+    res.json(data)
+  })
+})
+
+apiRoutes.get('/hotproduct/gets', function (req, res) {
+  getHotProduct().then(data => {
+    res.json(data)
+  })
+})
 /* ********************************** */
 
 apiRoutes.get('/vipmall/albumproduct/list', function (req, res) {

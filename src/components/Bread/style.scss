@@ -1,0 +1,35 @@
+.m-bread {
+  min-height: 30px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #333;
+  .block {
+    padding: 30px 0 19px 0;
+    font-size: 18px;
+    font-weight: 600;
+    .pointer {
+      font-size: 16px;
+      color: #999;
+    }
+  }
+  i {
+    position: relative;
+    top: 7px;
+    display: inline-block;
+    width: 16px;
+    height: 26px;
+    margin: 0 4px 0 8px;
+    background: url(http://s2.music.126.net/store/web/img/ar.png?c4b1f56752f6d10c74ae3cb469aa8086) no-repeat left center;
+  }
+  a:hover,
+  .share:hover {
+    text-decoration: underline;
+  }
+  .share {
+    margin-top: 11px;
+    background: url(http://s2.music.126.net/store/web/img/share.png?344498c14a6966fe396351eae994b9d9) no-repeat 0 2px;
+    font-size: 16px;
+    text-indent: 27px;
+    color: #666;
+    cursor: pointer;
+  }
+}
