@@ -1,4 +1,15 @@
 .common-head {
+  height: 73px;
+  background: #fff;
+  .border {
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background: url(http://s2.music.126.net/store/web/img/border.png?7ccd8492cce76ee59126c7f9e848af41) repeat-x;
+  }
+}
+
+.m-head {
   .m-logo {
     width: 290px;
     height: 70px;

@@ -52,3 +52,33 @@ export function getHotCommonProduct(limit = 60, offset = 0) {
     return Promise.resolve(res.data)
   })
 }
+
+// 获取新专辑
+export function getNewAlbum(limit = 60, offset = 0) {
+  const url = baseUrl + 'vipmall/albumproduct/list'
+  const params = {
+    limit,
+    offset
+  }
+
+  return axios.get(url, {
+    params
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
+// 获取畅销专辑
+export function getSaleAlbum(limit = 60, offset = 0) {
+  const url = baseUrl + 'vipmall/albumproduct/salelist'
+  const params = {
+    limit,
+    offset
+  }
+
+  return axios.get(url, {
+    params
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}

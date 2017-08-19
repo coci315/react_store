@@ -61,6 +61,44 @@ function getHotCommonProduct(limit, offset) {
   })
 }
 
+/* ********************************** */
+const baseUrl_2 = 'http://music.163.com/api/'
+const headers_2 = {
+  referer: 'http://music.163.com/store/product/dgalbum',
+  host: 'music.163.com'
+}
+
+function getNewAlbum(limit, offset) {
+  const url = baseUrl_2 + 'vipmall/albumproduct/list'
+  const params = {
+    limit,
+    offset
+  }
+
+  return axios.get(url, {
+    headers_2,
+    params
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
+
+function getSaleAlbum(limit, offset) {
+  const url = baseUrl_2 + 'vipmall/albumproduct/salelist'
+  const params = {
+    limit,
+    offset
+  }
+
+  return axios.get(url, {
+    headers_2,
+    params
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
 var port = process.env.PORT || 3000
 
 var app = express()
@@ -89,6 +127,20 @@ apiRoutes.get('/product/ipbanner', function (req, res) {
 apiRoutes.get('/hotcommonProduct/gets', function (req, res) {
   const { limit, offset } = req.query
   getHotCommonProduct(limit, offset).then(data => {
+    res.json(data)
+  })
+})
+
+apiRoutes.get('/vipmall/albumproduct/list', function (req, res) {
+  const { limit, offset } = req.query
+  getNewAlbum(limit, offset).then(data => {
+    res.json(data)
+  })
+})
+
+apiRoutes.get('/vipmall/albumproduct/salelist', function (req, res) {
+  const { limit, offset } = req.query
+  getSaleAlbum(limit, offset).then(data => {
     res.json(data)
   })
 })

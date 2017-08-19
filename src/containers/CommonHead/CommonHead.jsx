@@ -56,60 +56,64 @@ class CommonHead extends React.Component {
       }
     }
     return (
-      <div className="common-head f-cb clearfix">
-        <div className="m-logo f-fl">
-          <Link to="/" className="f-sprite"></Link>
-        </div>
-        <div className="m-search f-fl">
-          <div className="inputwrap" onClick={(e) => {
-            e.stopPropagation()
-          }}>
-            <SearchInput placeholder={this.state.defaultKey}
-              focusHandle={this.onSearchInputFocus.bind(this)}
-              inputHandle={this.onSearchInputInput.bind(this)}
-              enterHandle={this.goSearch.bind(this)}
-              value={searchInputValue}
-              ref={(input) => { this.searchInput = input }}
-            />
+      <div className="common-head f-pr">
+        <div className="m-head f-cb clearfix">
+          <div className="m-logo f-fl">
+            <Link to="/" className="f-sprite"></Link>
           </div>
-          <div className="wrap" onClick={(e) => {
-            e.stopPropagation()
-          }}>
-            {list}
+          <div className="m-search f-fl">
+            <div className="inputwrap" onClick={(e) => {
+              e.stopPropagation()
+            }}>
+              <SearchInput placeholder={this.state.defaultKey}
+                focusHandle={this.onSearchInputFocus.bind(this)}
+                inputHandle={this.onSearchInputInput.bind(this)}
+                enterHandle={this.goSearch.bind(this)}
+                value={searchInputValue}
+                ref={(input) => { this.searchInput = input }}
+              />
+            </div>
+            <div className="wrap" onClick={(e) => {
+              e.stopPropagation()
+            }}>
+              {list}
+            </div>
+          </div>
+          <div className="m-shopcar f-fl f-pr">
+            <Link to="/cart" className="f-sprite">
+              <span className="num f-sprite f-pa">0</span>
+            </Link>
+          </div>
+          <div className="m-user f-fl">
+            <div className="m-select f-pr"
+              onMouseOver={this.showMenu.bind(this)}
+              onMouseOut={this.hideMenu.bind(this)}
+            >
+              <div className="login">登录</div>
+              <ul style={{ display: (showMenu ? 'block' : 'none') }}>
+                <li>
+                  <a className="f-pr"><em className="phone"></em>手机号登录<span className="f-pa"></span></a>
+                </li>
+                <li>
+                  <a className="f-pr"><em className="wechat f-sprite-icon"></em>微信登录<span className="f-pa"></span></a>
+                </li>
+                <li>
+                  <a className="f-pr"><em className="qq f-sprite-icon"></em>QQ登录<span className="f-pa"></span></a>
+                </li>
+                <li>
+                  <a className="f-pr"><em className="sina"></em>新浪微博登录<span className="f-pa"></span></a>
+                </li>
+                <li>
+                  <a className="f-pr"><em className="netease"></em>网易邮箱账号登录<span className="f-pa"></span></a>
+                </li>
+              </ul>
+              <i className="arr f-sprite" style={{ display: (showMenu ? 'block' : 'none') }}></i>
+            </div>
           </div>
         </div>
-        <div className="m-shopcar f-fl f-pr">
-          <Link to="/cart" className="f-sprite">
-            <span className="num f-sprite f-pa">0</span>
-          </Link>
-        </div>
-        <div className="m-user f-fl">
-          <div className="m-select f-pr"
-            onMouseOver={this.showMenu.bind(this)}
-            onMouseOut={this.hideMenu.bind(this)}
-          >
-            <div className="login">登录</div>
-            <ul style={{ display: (showMenu ? 'block' : 'none') }}>
-              <li>
-                <a className="f-pr"><em className="phone"></em>手机号登录<span className="f-pa"></span></a>
-              </li>
-              <li>
-                <a className="f-pr"><em className="wechat f-sprite-icon"></em>微信登录<span className="f-pa"></span></a>
-              </li>
-              <li>
-                <a className="f-pr"><em className="qq f-sprite-icon"></em>QQ登录<span className="f-pa"></span></a>
-              </li>
-              <li>
-                <a className="f-pr"><em className="sina"></em>新浪微博登录<span className="f-pa"></span></a>
-              </li>
-              <li>
-                <a className="f-pr"><em className="netease"></em>网易邮箱账号登录<span className="f-pa"></span></a>
-              </li>
-            </ul>
-            <i className="arr f-sprite" style={{ display: (showMenu ? 'block' : 'none') }}></i>
-          </div>
-        </div>
+        <div className="border f-pa"></div>
       </div>
+
     )
   }
 
