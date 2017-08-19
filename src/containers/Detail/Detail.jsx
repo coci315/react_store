@@ -2,6 +2,7 @@ import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import { getProductDetail, getHotProduct } from '../../api/api.js'
 import Bread from '../../components/Bread/Bread'
+import Loading from '../../components/Loading/Loading'
 
 import './style.scss'
 class Detail extends React.Component {
@@ -9,15 +10,21 @@ class Detail extends React.Component {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
-      currentText: ''
+      currentText: '',
+      showLoading: true
     }
   }
   render() {
-    const { currentText } = this.state
+    const { currentText, showLoading } = this.state
     return (
       <div className="m-detail">
         <div className="g-bd f-cb">
           <Bread currentText={currentText} />
+          <div className="g-main">
+            <div className="n-detail">
+              <Loading showFlag={showLoading} />
+            </div>
+          </div>
         </div>
       </div>
     )
@@ -27,7 +34,20 @@ class Detail extends React.Component {
     this._getHotProduct()
   }
 
+  showLoading() {
+    this.setState({
+      showLoading: true
+    })
+  }
+
+  hideLoading() {
+    this.setState({
+      showLoading: false
+    })
+  }
+
   _getProductDetail() {
+    this.showLoading()
     const id = this.props.params.id
     getProductDetail(id).then(res => {
       console.log(res)
@@ -35,6 +55,7 @@ class Detail extends React.Component {
       this.setState({
         currentText
       })
+      this.hideLoading()
     })
   }
 

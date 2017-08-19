@@ -116,6 +116,13 @@
 		font-size: 24px;
 	}
 
+	.f-hide {
+		display: none;
+		position: absolute;
+		left: -9999px;
+		top: -9999px;
+	}
+
 	.s-fc1 {
 		color: #333;
 	}
