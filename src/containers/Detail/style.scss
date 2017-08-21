@@ -13,140 +13,187 @@
     .wrap {
       min-height: 530px;
     }
-  } // .n-display {
-  //   .pic {
-  //     box-sizing: border-box;
-  //     width: 440px;
-  //     height: 440px;
-  //     .imgbox {
-  //       position: relative;
-  //       overflow: hidden;
-  //       width: 100%;
-  //       height: 100%;
-  //       background: #f9f9f9;
-  //     }
-  //     .img1 {
-  //       width: 100%;
-  //       height: 100%;
-  //     }
-  //     .smallmask {
-  //       // display: none;
-  //       position: absolute;
-  //       left: 0;
-  //       top: 0;
-  //       width: 220px;
-  //       height: 220px;
-  //       cursor: move;
-  //       background: url(http://s2.music.126.net/store/web/img/s-mask.png?a9da8249756541e3dce59ba38a75c2ea) no-repeat;
-  //     }
-  //     .bigimgbox {
-  //       // display: none;
-  //       overflow: hidden;
-  //       z-index: 999;
-  //       position: absolute;
-  //       width: 530px;
-  //       height: 530px;
-  //       top: 0;
-  //       left: 450px;
-  //       background: #f9f9f9;
-  //       img {
-  //         position: absolute;
-  //         left: 0;
-  //         top: 0;
-  //         width: 1060px;
-  //         height: 1060px;
-  //       }
-  //     }
-  //     span {
-  //       // display: none;
-  //       position: absolute;
-  //       top: 180px;
-  //       width: 30px;
-  //       height: 80px;
-  //       cursor: pointer;
-  //       &.arrowleft {
-  //         left: 0;
-  //       }
-  //       &.arrowright {
-  //         right: 0;
-  //       }
-  //     }
-  //     .u-icn {
-  //       display: inline-block;
-  //       vertical-align: middle;
-  //       overflow: hidden;
-  //       background: url(http://s2.music.126.net/store/web/img/sprite/icon.png?62ec5d42efa3ef62fa057c98225818a9) no-repeat 0 9999px;
-  //     }
-  //     .u-arrowl {
-  //       position: absolute;
-  //       left: 10px;
-  //       top: 25px;
-  //       width: 16px;
-  //       height: 30px;
-  //       background-position: 0px -781px;
-  //     }
-  //     .u-arrowr {
-  //       position: absolute;
-  //       right: 10px;
-  //       top: 25px;
-  //       width: 16px;
-  //       height: 30px;
-  //       background-position: 0px -661px;
-  //     }
-  //     .u-num {
-  //       display: none;
-  //       position: absolute;
-  //       bottom: 10px;
-  //       left: 50%;
-  //       width: 50px;
-  //       height: 20px;
-  //       margin-left: -25px;
-  //       background: rgba(0, 0, 0, 0.1);
-  //       border-radius: 2px;
-  //       color: #666;
-  //       font-size: 10px;
-  //       text-align: center;
-  //       .numctn {
-  //         display: inline-block;
-  //         margin-top: 1px;
-  //       }
-  //     }
-  //     &:hover {
-  //       .u-num {
-  //         display: block;
-  //       }
-  //     }
-  //   }
-  //   .smnav {
-  //     z-index: 1;
-  //     width: 440px;
-  //     height: 80px;
-  //     margin-top: 10px;
-  //     overflow: hidden;
-  //     ul {
-  //       width: 3000px;
-  //       transition: .3s;
-  //     }
-  //     li {
-  //       box-sizing: border-box;
-  //       float: left;
-  //       width: 80px;
-  //       height: 80px;
-  //       margin-right: 10px;
-  //       background: #f9f9f9;
-  //       border: 2px solid #fff;
-  //       &.z-sel {
-  //         border: 2px solid #d33a31;
-  //       }
-  //       img {
-  //         width: 100%;
-  //         height: 100%;
-  //         cursor: pointer;
-  //       }
-  //     }
-  //   }
-  // }
+  }
   .n-info {
     width: 580px;
+    h2 {
+      line-height: 34px;
+      color: #333;
+      font-size: 24px;
+    }
+    .sellpoint {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #999;
+    }
+    .price {
+      margin: 20px 0;
+      font-size: 14px;
+      .rmb {
+        margin-right: 3px;
+        font-size: 30px;
+        color: #d33a31;
+      }
+      em {
+        margin-right: 4px;
+        font-size: 30px;
+        color: #d33a31;
+      }
+      sub {
+        position: relative;
+        top: -5px;
+        font-size: 14px;
+        color: #cb3b3b;
+      }
+      .dis {
+        margin-left: 16px;
+        font-size: 16px;
+        color: #999;
+        text-decoration: line-through;
+      }
+    }
+    .m-coupons {
+      margin: 16px -16px 0px -8px;
+      border: 1px solid #fff;
+      padding: 0 7px;
+      .title {
+        height: 32px;
+        overflow: hidden;
+        float: left;
+        height: 30px;
+        line-height: 30px;
+        margin-right: 30px;
+        color: #999;
+      }
+      ul {
+        position: absolute;
+        z-index: 99;
+        left: 67px;
+        height: 30px;
+        overflow: hidden;
+        li {
+          width: 518px;
+          height: 28px;
+          line-height: 28px;
+          background-color: #fdf5f4;
+          border: 1px solid #f8e2e0;
+          border-bottom: none;
+          .label {
+            padding: 0 3px;
+            border: 1px solid #d33a31;
+            color: #d33a31;
+          }
+          span {
+            margin-left: 8px;
+          }
+        }
+        .lst {
+          border-bottom: 1px solid #f8e2e0;
+        }
+      }
+    }
+    .select {
+      margin: 16px -16px 0 -8px;
+      border: 1px solid #fff;
+      padding: 0 7px;
+      .title {
+        height: 32px;
+        overflow: hidden;
+        float: left;
+        height: 30px;
+        line-height: 30px;
+        margin-right: 30px;
+        color: #999;
+      }
+      ul {
+        overflow: hidden;
+        width: 510px;
+        float: left;
+        margin-bottom: -8px;
+      }
+      li {
+        float: left;
+        box-sizing: border-box;
+        height: 30px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        padding: 0 20px;
+        border: 1px solid #e5e5e5;
+        line-height: 27px;
+        text-align: center;
+        background: #fff;
+        cursor: pointer;
+        &.z-sel {
+          border: 2px solid #d33a31;
+          padding: 0 19px;
+          line-height: 25px;
+        }
+      }
+    }
+  }
+  .m-services {
+    margin-top: 20px;
+    p {
+      overflow: hidden;
+      position: absolute;
+      top: 50%;
+      margin-top: -16px;
+      height: 30px;
+      line-height: 30px;
+      margin-right: 30px;
+      color: #999;
+    }
+    .cnt {
+      cursor: pointer;
+      margin-left: 76px;
+      a {
+        display: inline-block;
+        position: relative;
+        line-height: 20px;
+        margin-right: 28px;
+        color: #666;
+        &:after {
+          content: '';
+          position: absolute;
+          top: 8px;
+          left: -8px;
+          width: 3px;
+          height: 3px;
+          border-radius: 100%;
+          background-color: #d33a31;
+        }
+      }
+      &:hover {
+        a {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  .buyorjoin {
+    a {
+      position: relative;
+    }
+  }
+  .u-btn-red,
+  .u-btn-white {
+    width: 170px;
+    height: 50px;
+    line-height: 50px;
+    margin-top: 40px;
+    font-size: 18px;
+  }
+  .u-btn-white {
+    box-sizing: border-box;
+    line-height: 47px;
+  }
+  .u-btn-red {
+    i {
+      margin: -4px 6px 0 0;
+      vertical-align: middle;
+    }
+  }
+  .u-btn-red-1 {
+    width: 188px;
   }
 }

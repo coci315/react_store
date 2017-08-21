@@ -63,6 +63,10 @@
 		margin: 0 auto;
 	}
 
+	.f-mgr10 {
+		margin-right: 10px;
+	}
+
 	.f-thide {
 		word-wrap: normal;
 		white-space: nowrap;
@@ -123,6 +127,19 @@
 		top: -9999px;
 	}
 
+	.f-ff2 {
+		font-family: quote, "Microsoft Yahei", simsun, Arial, Helvetica, sans-serif;
+		font-weight: normal;
+	}
+
+	.f-fcLink {
+		color: #328ad4;
+	}
+
+	.f-hand {
+		cursor: pointer;
+	}
+
 	.s-fc1 {
 		color: #333;
 	}
@@ -133,4 +150,56 @@
 
 	.s-fc4 {
 		color: #999;
+	}
+
+	.u-icn {
+		display: inline-block;
+		vertical-align: middle;
+		overflow: hidden;
+		background: url(http://s2.music.126.net/store/web/img/sprite/icon.png?62ec5d42efa3ef62fa057c98225818a9) no-repeat 0 9999px;
+	}
+
+	.u-icn-7 {
+		width: 30px;
+		height: 22px;
+		background-position: -80px -332px;
+	}
+
+	.u-icn-27 {
+		width: 28px;
+		height: 28px;
+		background-position: -78px -468px;
+	}
+
+	.u-icn-28 {
+		width: 28px;
+		height: 28px;
+		background-position: -40px -468px;
+	}
+
+	.u-btn {
+		display: inline-block;
+		height: 40px;
+		line-height: 40px;
+		width: 155px;
+		text-align: center;
+		color: #fff;
+		&:hover {
+			color: #fff;
+		}
+	}
+
+	.u-btn-white {
+		box-sizing: border-box;
+		border: 2px solid #d33a31;
+		color: #d33a31;
+		font-size: 18px;
+		background-color: #fff;
+		&:hover {
+			color: #d33a31;
+		}
+	}
+
+	.u-btn-red {
+		background-color: #d33a31;
 	}
