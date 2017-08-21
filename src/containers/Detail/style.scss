@@ -10,5 +10,143 @@
   .n-detail {
     padding-top: 5px;
     min-height: 600px;
+    .wrap {
+      min-height: 530px;
+    }
+  } // .n-display {
+  //   .pic {
+  //     box-sizing: border-box;
+  //     width: 440px;
+  //     height: 440px;
+  //     .imgbox {
+  //       position: relative;
+  //       overflow: hidden;
+  //       width: 100%;
+  //       height: 100%;
+  //       background: #f9f9f9;
+  //     }
+  //     .img1 {
+  //       width: 100%;
+  //       height: 100%;
+  //     }
+  //     .smallmask {
+  //       // display: none;
+  //       position: absolute;
+  //       left: 0;
+  //       top: 0;
+  //       width: 220px;
+  //       height: 220px;
+  //       cursor: move;
+  //       background: url(http://s2.music.126.net/store/web/img/s-mask.png?a9da8249756541e3dce59ba38a75c2ea) no-repeat;
+  //     }
+  //     .bigimgbox {
+  //       // display: none;
+  //       overflow: hidden;
+  //       z-index: 999;
+  //       position: absolute;
+  //       width: 530px;
+  //       height: 530px;
+  //       top: 0;
+  //       left: 450px;
+  //       background: #f9f9f9;
+  //       img {
+  //         position: absolute;
+  //         left: 0;
+  //         top: 0;
+  //         width: 1060px;
+  //         height: 1060px;
+  //       }
+  //     }
+  //     span {
+  //       // display: none;
+  //       position: absolute;
+  //       top: 180px;
+  //       width: 30px;
+  //       height: 80px;
+  //       cursor: pointer;
+  //       &.arrowleft {
+  //         left: 0;
+  //       }
+  //       &.arrowright {
+  //         right: 0;
+  //       }
+  //     }
+  //     .u-icn {
+  //       display: inline-block;
+  //       vertical-align: middle;
+  //       overflow: hidden;
+  //       background: url(http://s2.music.126.net/store/web/img/sprite/icon.png?62ec5d42efa3ef62fa057c98225818a9) no-repeat 0 9999px;
+  //     }
+  //     .u-arrowl {
+  //       position: absolute;
+  //       left: 10px;
+  //       top: 25px;
+  //       width: 16px;
+  //       height: 30px;
+  //       background-position: 0px -781px;
+  //     }
+  //     .u-arrowr {
+  //       position: absolute;
+  //       right: 10px;
+  //       top: 25px;
+  //       width: 16px;
+  //       height: 30px;
+  //       background-position: 0px -661px;
+  //     }
+  //     .u-num {
+  //       display: none;
+  //       position: absolute;
+  //       bottom: 10px;
+  //       left: 50%;
+  //       width: 50px;
+  //       height: 20px;
+  //       margin-left: -25px;
+  //       background: rgba(0, 0, 0, 0.1);
+  //       border-radius: 2px;
+  //       color: #666;
+  //       font-size: 10px;
+  //       text-align: center;
+  //       .numctn {
+  //         display: inline-block;
+  //         margin-top: 1px;
+  //       }
+  //     }
+  //     &:hover {
+  //       .u-num {
+  //         display: block;
+  //       }
+  //     }
+  //   }
+  //   .smnav {
+  //     z-index: 1;
+  //     width: 440px;
+  //     height: 80px;
+  //     margin-top: 10px;
+  //     overflow: hidden;
+  //     ul {
+  //       width: 3000px;
+  //       transition: .3s;
+  //     }
+  //     li {
+  //       box-sizing: border-box;
+  //       float: left;
+  //       width: 80px;
+  //       height: 80px;
+  //       margin-right: 10px;
+  //       background: #f9f9f9;
+  //       border: 2px solid #fff;
+  //       &.z-sel {
+  //         border: 2px solid #d33a31;
+  //       }
+  //       img {
+  //         width: 100%;
+  //         height: 100%;
+  //         cursor: pointer;
+  //       }
+  //     }
+  //   }
+  // }
+  .n-info {
+    width: 580px;
   }
 }
