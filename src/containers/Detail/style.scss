@@ -52,46 +52,6 @@
         text-decoration: line-through;
       }
     }
-    .m-coupons {
-      margin: 16px -16px 0px -8px;
-      border: 1px solid #fff;
-      padding: 0 7px;
-      .title {
-        height: 32px;
-        overflow: hidden;
-        float: left;
-        height: 30px;
-        line-height: 30px;
-        margin-right: 30px;
-        color: #999;
-      }
-      ul {
-        position: absolute;
-        z-index: 99;
-        left: 67px;
-        height: 30px;
-        overflow: hidden;
-        li {
-          width: 518px;
-          height: 28px;
-          line-height: 28px;
-          background-color: #fdf5f4;
-          border: 1px solid #f8e2e0;
-          border-bottom: none;
-          .label {
-            padding: 0 3px;
-            border: 1px solid #d33a31;
-            color: #d33a31;
-          }
-          span {
-            margin-left: 8px;
-          }
-        }
-        .lst {
-          border-bottom: 1px solid #f8e2e0;
-        }
-      }
-    }
     .select {
       margin: 16px -16px 0 -8px;
       border: 1px solid #fff;

@@ -1,0 +1,63 @@
+.m-coupons {
+  margin: 16px -16px 0px -8px;
+  border: 1px solid #fff;
+  padding: 0 7px;
+  .title {
+    height: 32px;
+    overflow: hidden;
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    margin-right: 30px;
+    color: #999;
+  }
+  ul {
+    position: absolute;
+    z-index: 99;
+    left: 73px;
+    height: 30px;
+    overflow: hidden;
+    &.show-all {
+      height: auto;
+    }
+    li {
+      width: 518px;
+      height: 28px;
+      line-height: 28px;
+      background-color: #fdf5f4;
+      border: 1px solid #f8e2e0;
+      border-bottom: none;
+      .label {
+        padding: 0 3px;
+        border: 1px solid #d33a31;
+        color: #d33a31;
+      }
+      span {
+        margin-left: 8px;
+      }
+      a:hover {
+        text-decoration: underline;
+        color: #333;
+      }
+      .all {
+        margin-left: 8px;
+        margin-right: 10px;
+        color: #666;
+      }
+      .arr {
+        display: inline-block;
+        margin-left: 4px;
+        width: 9px;
+        height: 6px;
+        background-size: 9px 6px;
+        background: url(http://s2.music.126.net/store/web/img/icons/arrowd.png?dff205f3e2dc00205a0d6e43e6e33c0d);
+      }
+      .up {
+        background: url(http://s2.music.126.net/store/web/img/icons/arrowu.png?3c7fb17c853999d3c4a7ceedaa291388);
+      }
+    }
+    .lst {
+      border-bottom: 1px solid #f8e2e0;
+    }
+  }
+}

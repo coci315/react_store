@@ -7,6 +7,7 @@ import ImgDisplay from './subpages/ImgDisplay/ImgDisplay'
 import Count from '../../components/Count/Count'
 import ProductDetail from './subpages/ProductDetail/ProductDetail'
 import HotProduct from './subpages/HotProduct/HotProduct'
+import Coupon from '../../components/Coupon/Coupon'
 
 import './style.scss'
 class Detail extends React.Component {
@@ -60,23 +61,7 @@ class Detail extends React.Component {
                         </p>
                         {
                           coupons.length ? (
-                            <div className="m-coupons clearfix f-pr">
-                              <div className="title f-pr">促销：</div>
-                              <ul>
-                                {
-                                  coupons.map((item, index) => {
-                                    return (
-                                      <li className={index === coupons.length - 1 ? "lst" : ""} key={item.couponId}>
-                                        <span className="label">{item.couponLabel}</span>
-                                        <span>{item.effectAction.effectValue}折&nbsp;&nbsp;{item.couponName},</span>
-                                        <span>无门槛</span>
-                                        <span className="f-fcLink f-hand">领券</span>
-                                      </li>
-                                    )
-                                  })
-                                }
-                              </ul>
-                            </div>
+                            <Coupon coupons={coupons} />
                           ) : ''
                         }
                         {
