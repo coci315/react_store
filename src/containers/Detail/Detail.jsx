@@ -6,6 +6,7 @@ import Loading from '../../components/Loading/Loading'
 import ImgDisplay from './subpages/ImgDisplay/ImgDisplay'
 import Count from '../../components/Count/Count'
 import ProductDetail from './subpages/ProductDetail/ProductDetail'
+import HotProduct from './subpages/HotProduct/HotProduct'
 
 import './style.scss'
 class Detail extends React.Component {
@@ -20,11 +21,12 @@ class Detail extends React.Component {
       skus: [],
       currentSkuIndex: 0,
       coupons: [],
-      descr: []
+      descr: [],
+      hotProduct: []
     }
   }
   render() {
-    const { currentText, showLoading, product, picUrls, skus, currentSkuIndex, coupons, descr } = this.state
+    const { currentText, showLoading, product, picUrls, skus, currentSkuIndex, coupons, descr, hotProduct } = this.state
     const attrs = this._getAttrs(skus)
     return (
       <div className="m-detail">
@@ -143,7 +145,7 @@ class Detail extends React.Component {
                       <ProductDetail descr={descr} />
                     </div>
                     <div className="n-hotrecommend">
-
+                      <HotProduct hotProduct={hotProduct} />
                     </div>
                   </div>
                 ) : ''
@@ -198,6 +200,10 @@ class Detail extends React.Component {
   _getHotProduct() {
     getHotProduct().then(res => {
       console.log(res)
+      const hotProduct = res.data.slice(0, 4)
+      this.setState({
+        hotProduct
+      })
     })
   }
 

@@ -18,11 +18,11 @@ class ProductDetail extends React.Component {
             descr.map((item, index) => {
               if (item.type === 1) {
                 return (
-                  <p dangerouslySetInnerHTML={{ __html: item.resource }}></p>
+                  <p dangerouslySetInnerHTML={{ __html: item.resource }} key={index}></p>
                 )
               } else if (item.type === 2) {
                 return (
-                  <img src={item.resource} alt="" />
+                  <img src={item.resource} alt="" key={index} />
                 )
               }
             })
