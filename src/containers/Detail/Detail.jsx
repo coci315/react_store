@@ -5,6 +5,7 @@ import Bread from '../../components/Bread/Bread'
 import Loading from '../../components/Loading/Loading'
 import ImgDisplay from './subpages/ImgDisplay/ImgDisplay'
 import Count from '../../components/Count/Count'
+import ProductDetail from './subpages/ProductDetail/ProductDetail'
 
 import './style.scss'
 class Detail extends React.Component {
@@ -18,11 +19,12 @@ class Detail extends React.Component {
       picUrls: [],
       skus: [],
       currentSkuIndex: 0,
-      coupons: []
+      coupons: [],
+      descr: []
     }
   }
   render() {
-    const { currentText, showLoading, product, picUrls, skus, currentSkuIndex, coupons } = this.state
+    const { currentText, showLoading, product, picUrls, skus, currentSkuIndex, coupons, descr } = this.state
     const attrs = this._getAttrs(skus)
     return (
       <div className="m-detail">
@@ -115,13 +117,33 @@ class Detail extends React.Component {
                           <a className="server">云音乐自营</a>
                         </div>
                       </div>
-                      <p className="buyorjoin clearfix">
-                        <a href="javascript:;" className="f-fl u-btn u-btn-white f-mgr10">立即购买</a>
-                        <a href="javascript:;" className="f-fl u-btn u-btn-red u-btn-red-1">
-                          <i className="u-icn u-icn-7"></i>
-                          加入购物车
-                        </a>
-                      </p>
+                      {
+                        product.status === -1 ? (
+                          <p className="buyorjoin clearfix">
+                            <a href="javascript:;" className="u-btn u-btn-gray">已下架</a>
+                          </p>
+                        ) : (
+                            <p className="buyorjoin clearfix">
+                              <a href="javascript:;" className="f-fl u-btn u-btn-white f-mgr10">立即购买</a>
+                              <a href="javascript:;" className="f-fl u-btn u-btn-red u-btn-red-1">
+                                <i className="u-icn u-icn-7"></i>
+                                加入购物车
+                              </a>
+                            </p>
+                          )
+                      }
+                    </div>
+                  </div>
+                ) : ''
+              }
+              {
+                product ? (
+                  <div className="n-content">
+                    <div className="n-content-left clearfix">
+                      <ProductDetail descr={descr} />
+                    </div>
+                    <div className="n-hotrecommend">
+
                     </div>
                   </div>
                 ) : ''
@@ -160,12 +182,14 @@ class Detail extends React.Component {
       const picUrls = res.product.picUrls
       const currentText = res.product.name
       const coupons = res.coupons
+      const descr = res.product.descr
       this.setState({
         currentText,
         product,
         picUrls,
         skus,
-        coupons
+        coupons,
+        descr
       })
       this.hideLoading()
     })
