@@ -9,6 +9,7 @@ import ProductDetail from './subpages/ProductDetail/ProductDetail'
 import HotProduct from './subpages/HotProduct/HotProduct'
 import Coupon from '../../components/Coupon/Coupon'
 import Service from '../../components/Service/Service'
+import Layer from '../../components/Layer/Layer'
 
 import './style.scss'
 class Detail extends React.Component {
@@ -98,6 +99,7 @@ class Detail extends React.Component {
                       <Service serviceType={product.serviceType}
                         businessName={product.businessName}
                         brandName={product.brandName}
+                        clickHandle={this.onServiceClick.bind(this)}
                       />
                       {
                         product.status === -1 ? (
@@ -133,6 +135,7 @@ class Detail extends React.Component {
             </div>
           </div>
         </div>
+        <Layer ref={(layer) => { this.layer = layer }} />
       </div>
     )
   }
@@ -157,6 +160,10 @@ class Detail extends React.Component {
     const id = nextProps.params.id
     this._getProductDetail(id)
     this._getHotProduct()
+  }
+
+  onServiceClick(service) {
+    this.layer.show(service)
   }
 
   showLoading() {

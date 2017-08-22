@@ -1,0 +1,91 @@
+.m-layerwrap {
+  .mask {
+    position: fixed;
+    z-index: 9997;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0);
+  }
+}
+
+.m-layer {
+  position: fixed;
+  z-index: 9998;
+  left: -9999px;
+  top: -9999px;
+  width: 580px;
+  border-radius: 4px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  border: none;
+  background-color: #fff;
+  .zbar {
+    position: relative;
+    z-index: 10;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px 4px 0 0;
+    background-color: #f6f6f6;
+    cursor: move;
+    user-select: none;
+  }
+  .zttl {
+    margin: 0;
+    height: 60px;
+    line-height: 60px;
+    padding-left: 20px;
+    border-radius: 3px 3px 0 0;
+    font-weight: 600;
+    font-size: 16px;
+    color: #666;
+    background-position: 50% 0;
+  }
+  .zcnt {
+    padding-top: 30px;
+    border-width: 0 1px 1px;
+    border-radius: 0 0 4px 4px;
+    background: #fff;
+  }
+  .service-layer {
+    .cnt {
+      max-height: 300px;
+      overflow: auto;
+      font-size: 14px;
+      margin: -30px 0 40px 30px;
+      padding-top: 30px;
+      .service {
+        position: relative;
+        margin-left: 10px;
+        &:after {
+          content: '';
+          position: absolute;
+          top: 8px;
+          left: -8px;
+          width: 3px;
+          height: 3px;
+          border-radius: 100%;
+          background-color: #d33a31;
+        }
+      }
+      p {
+        margin: 0 0 28px 10px;
+        color: #999;
+      }
+    }
+    .footer {
+      margin-bottom: 40px;
+    }
+  }
+  .zcls {
+    position: absolute;
+    z-index: 20;
+    top: 21px;
+    right: 20px;
+    width: 18px;
+    height: 18px;
+    overflow: hidden;
+    text-indent: -9999px;
+    cursor: pointer;
+    background: url(http://s2.music.126.net/store/web/img/chag.png?2a9367c4472e9017ba1ce0a801b8f34e);
+  }
+}

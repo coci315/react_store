@@ -42,7 +42,7 @@ class Service extends React.Component {
     return (
       <div className="m-services f-pr">
         <p>服务：</p>
-        <div className="cnt">
+        <div className="cnt" onClick={this.clickHandle.bind(this)}>
           {
             serviceType.map((item, index) => {
               return (
@@ -59,12 +59,28 @@ class Service extends React.Component {
     this.serviceDetail['8'] = this.serviceDetail['8'].replace('{businessName}', businessName)
     this.serviceDetail['11'] = this.serviceDetail['11'].replace('{brandName}', brandName)
   }
+
+  clickHandle() {
+    const { serviceType } = this.props
+    const service = this._getService(serviceType)
+    this.props.clickHandle && this.props.clickHandle(service)
+  }
+
+  _getService(serviceType) {
+    return serviceType.map(item => {
+      return {
+        title: this.serviceText[item],
+        content: this.serviceDetail[item]
+      }
+    })
+  }
 }
 
 Service.propTypes = {
   serviceType: PropTypes.array,
   businessName: PropTypes.string,
-  brandName: PropTypes.string
+  brandName: PropTypes.string,
+  clickHandle: PropTypes.func
 }
 
 Service.defaultProps = {

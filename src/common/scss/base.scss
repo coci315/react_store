@@ -219,3 +219,22 @@
 			pointer-events: none;
 		}
 	}
+
+	.u-btn-new {
+		display: inline-block;
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+		background-color: #d33a31;
+		color: #fff;
+		font-size: 16px;
+		text-decoration: none;
+		&:hover {
+			color: #fff;
+			text-decoration: none;
+		}
+	}
+
+	.u-btn-new2 {
+		width: 140px;
+	}
