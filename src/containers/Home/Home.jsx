@@ -94,7 +94,8 @@ class Home extends React.Component {
 
   _formatHotProduct(hotProduct) {
     return hotProduct.map(item => {
-      const { name, id, coverUrl, minPrice, originalCost, tags, vipMinPrice } = item.products
+      const name = item.name
+      const { id, coverUrl, minPrice, originalCost, tags, vipMinPrice } = item.products
       return {
         name,
         id,

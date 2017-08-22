@@ -8,6 +8,7 @@ import Count from '../../components/Count/Count'
 import ProductDetail from './subpages/ProductDetail/ProductDetail'
 import HotProduct from './subpages/HotProduct/HotProduct'
 import Coupon from '../../components/Coupon/Coupon'
+import Service from '../../components/Service/Service'
 
 import './style.scss'
 class Detail extends React.Component {
@@ -16,7 +17,7 @@ class Detail extends React.Component {
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
       currentText: '',
-      showLoading: true,
+      showLoading: false,
       product: null,
       picUrls: [],
       skus: [],
@@ -94,16 +95,10 @@ class Detail extends React.Component {
                         }
                         <Count />
                       </div>
-                      <div className="m-services f-pr">
-                        <p>服务：</p>
-                        <div className="cnt">
-                          <a className="server">7天无理由退货</a>
-                          <a className="server">15天无忧换货</a>
-                          <a className="server">满119包邮</a>
-                          <a className="server">顺丰发货</a>
-                          <a className="server">云音乐自营</a>
-                        </div>
-                      </div>
+                      <Service serviceType={product.serviceType}
+                        businessName={product.businessName}
+                        brandName={product.brandName}
+                      />
                       {
                         product.status === -1 ? (
                           <p className="buyorjoin clearfix">
@@ -142,7 +137,25 @@ class Detail extends React.Component {
     )
   }
   componentDidMount() {
-    this._getProductDetail()
+    const id = this.props.params.id
+    this._getProductDetail(id)
+    this._getHotProduct()
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      currentText: '',
+      showLoading: false,
+      product: null,
+      picUrls: [],
+      skus: [],
+      currentSkuIndex: 0,
+      coupons: [],
+      descr: [],
+      hotProduct: []
+    })
+    const id = nextProps.params.id
+    this._getProductDetail(id)
     this._getHotProduct()
   }
 
@@ -158,9 +171,9 @@ class Detail extends React.Component {
     })
   }
 
-  _getProductDetail() {
+  _getProductDetail(id) {
     this.showLoading()
-    const id = this.props.params.id
+
     getProductDetail(id).then(res => {
       console.log(res)
       const product = res.product

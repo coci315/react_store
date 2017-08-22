@@ -3,6 +3,10 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 import PropTypes from 'prop-types'
 
 import './style.scss'
+const effectText = {
+  '1': '元',
+  '2': '折'
+}
 class Coupon extends React.Component {
   constructor(props, context) {
     super(props, context)
@@ -27,7 +31,7 @@ class Coupon extends React.Component {
               return (
                 <li className={index === coupons.length - 1 ? "lst" : ""} key={item.couponId}>
                   <span className="label">{item.couponLabel}</span>
-                  <span>{item.effectAction.effectValue}折&nbsp;&nbsp;{item.couponName},</span>
+                  <span>{item.effectAction.effectValue}{effectText[item.effectAction.effectType]}&nbsp;&nbsp;{item.couponName},</span>
                   <span>无门槛</span>
                   <span className="f-fcLink f-hand">领券</span>
                   {
