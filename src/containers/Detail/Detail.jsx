@@ -1,6 +1,6 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
-import { getProductDetail, getHotProduct } from '../../api/api.js'
+import { getProductDetail, getHotProduct, getPromotion } from '../../api/api.js'
 import Bread from '../../components/Bread/Bread'
 import Loading from '../../components/Loading/Loading'
 import ImgDisplay from './subpages/ImgDisplay/ImgDisplay'
@@ -10,6 +10,7 @@ import HotProduct from './subpages/HotProduct/HotProduct'
 import Coupon from '../../components/Coupon/Coupon'
 import Service from '../../components/Service/Service'
 import Layer from '../../components/Layer/Layer'
+import TopBar from '../../components/TopBar/TopBar'
 
 import './style.scss'
 class Detail extends React.Component {
@@ -25,12 +26,17 @@ class Detail extends React.Component {
       currentSkuIndex: 0,
       coupons: [],
       descr: [],
-      hotProduct: []
+      hotProduct: [],
+      promotion: null
     }
   }
   render() {
-    const { currentText, showLoading, product, picUrls, skus, currentSkuIndex, coupons, descr, hotProduct } = this.state
+    const { currentText, showLoading, product, picUrls, skus, currentSkuIndex, coupons, descr, hotProduct, promotion } = this.state
     const attrs = this._getAttrs(skus)
+    let currentPrice = ''
+    if (product) {
+      currentPrice = product.discount ? skus[currentSkuIndex].spePrice : skus[currentSkuIndex].price
+    }
     return (
       <div className="m-detail">
         <div className="g-bd f-cb">
@@ -52,9 +58,14 @@ class Detail extends React.Component {
                             <p className="sellpoint">{product.suggestWord}</p>
                           ) : ''
                         }
+                        {
+                          promotion && promotion.flag === 1 ? (
+                            <p className="sellpoint">{promotion.promotionText}</p>
+                          ) : ''
+                        }
                         <p className="price">
                           <span className="rmb">￥</span>
-                          <em>{product.discount ? skus[currentSkuIndex].spePrice : skus[currentSkuIndex].price}</em>
+                          <em>{currentPrice}</em>
                           {
                             product.discount ? (
                               <sub className="dis">￥{skus[currentSkuIndex].price}</sub>
@@ -108,8 +119,8 @@ class Detail extends React.Component {
                           </p>
                         ) : (
                             <p className="buyorjoin clearfix">
-                              <a href="javascript:;" className="f-fl u-btn u-btn-white f-mgr10">立即购买</a>
-                              <a href="javascript:;" className="f-fl u-btn u-btn-red u-btn-red-1">
+                              <a href="javascript:;" className="f-fl u-btn u-btn-white u-btn-white-1 f-mgr10">立即购买</a>
+                              <a href="javascript:;" className="f-fl u-btn u-btn-red u-btn-red-1 u-btn-red-2">
                                 <i className="u-icn u-icn-7"></i>
                                 加入购物车
                               </a>
@@ -124,7 +135,7 @@ class Detail extends React.Component {
                 product ? (
                   <div className="n-content">
                     <div className="n-content-left clearfix">
-                      <ProductDetail descr={descr} />
+                      <ProductDetail descr={descr} promotion={promotion} />
                     </div>
                     <div className="n-hotrecommend">
                       <HotProduct hotProduct={hotProduct} />
@@ -136,6 +147,11 @@ class Detail extends React.Component {
           </div>
         </div>
         <Layer ref={(layer) => { this.layer = layer }} />
+        {
+          product ? (
+            <TopBar name={product.name} picUrls={picUrls} currentPrice={currentPrice} />
+          ) : ''
+        }
       </div>
     )
   }
@@ -143,6 +159,7 @@ class Detail extends React.Component {
     const id = this.props.params.id
     this._getProductDetail(id)
     this._getHotProduct()
+    this._getPromotion(id)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -160,6 +177,7 @@ class Detail extends React.Component {
     const id = nextProps.params.id
     this._getProductDetail(id)
     this._getHotProduct()
+    this._getPromotion(id)
   }
 
   onServiceClick(service) {
@@ -208,6 +226,16 @@ class Detail extends React.Component {
       const hotProduct = res.data.slice(0, 4)
       this.setState({
         hotProduct
+      })
+    })
+  }
+
+  _getPromotion(productId, clientType = 1) {
+    getPromotion(productId, clientType).then(res => {
+      console.log(res)
+      const promotion = res.data
+      this.setState({
+        promotion
       })
     })
   }

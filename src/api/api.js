@@ -122,3 +122,18 @@ export function getHotProduct() {
     return Promise.resolve(res.data)
   })
 }
+
+// 获取推广信息
+export function getPromotion(productId, clientType = 1) {
+  const url = baseUrl + 'promotion/product/get'
+  const params = {
+    productId,
+    clientType
+  }
+
+  return axios.get(url, {
+    params
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}

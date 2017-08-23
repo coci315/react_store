@@ -9,11 +9,16 @@ class ProductDetail extends React.Component {
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
   }
   render() {
-    const { descr } = this.props
+    const { descr, promotion } = this.props
     return (
       <div className="product-detail">
         <h2>商品详情</h2>
         <div className="n-describe">
+          {
+            promotion && promotion.flag === 1 ? (
+              <img src={promotion.promotionPicId} alt="" />
+            ) : ''
+          }
           {
             descr.map((item, index) => {
               if (item.type === 1) {
@@ -34,11 +39,13 @@ class ProductDetail extends React.Component {
 }
 
 ProductDetail.propTypes = {
-  descr: PropTypes.array
+  descr: PropTypes.array,
+  promotion: PropTypes.object
 }
 
 ProductDetail.defaultProps = {
-  descr: []
+  descr: [],
+  promotion: null
 }
 
 export default ProductDetail

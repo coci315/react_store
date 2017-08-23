@@ -102,6 +102,21 @@ function getHotProduct() {
   })
 }
 
+function getPromotion(productId, clientType) {
+  const url = baseUrl + 'promotion/product/get'
+  const params = {
+    productId,
+    clientType
+  }
+
+  return axios.get(url, {
+    headers,
+    params
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
 /* ********************************** */
 const baseUrl_2 = 'http://music.163.com/api/'
 const headers_2 = {
@@ -188,6 +203,13 @@ apiRoutes.get('/product/detail', function (req, res) {
 
 apiRoutes.get('/hotproduct/gets', function (req, res) {
   getHotProduct().then(data => {
+    res.json(data)
+  })
+})
+
+apiRoutes.get('/promotion/product/get', function (req, res) {
+  const { productId, clientType } = req.query
+  getPromotion(productId, clientType).then(data => {
     res.json(data)
   })
 })
