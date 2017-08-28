@@ -137,3 +137,26 @@ export function getPromotion(productId, clientType = 1) {
     return Promise.resolve(res.data)
   })
 }
+
+// 获取搜索结果
+export function getSearchResult(key, limit = 60, offset = 0) {
+  const url = baseUrl + 'product/search'
+  let data = {
+    key,
+    limit,
+    offset
+  }
+  data = urlencoded(data)
+
+  return axios.post(url, data).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
+function urlencoded(obj) {
+  let str = ''
+  for (let key in obj) {
+    str += ('&' + key + '=' + encodeURIComponent(obj[key]))
+  }
+  return str.slice(1)
+}

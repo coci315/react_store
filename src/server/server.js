@@ -1,4 +1,15 @@
 var express = require('express')
+var bodyParser = require('body-parser')
+// var multer = require('multer')
+
+function urlencoded(obj) {
+  let str = ''
+  for (let key in obj) {
+    str += ('&' + key + '=' + encodeURIComponent(obj[key]))
+  }
+  return str.slice(1)
+}
+
 var axios = require('axios')
 
 const baseUrl = 'http://music.163.com/store/api/'
@@ -117,6 +128,22 @@ function getPromotion(productId, clientType) {
   })
 }
 
+function getSearchResult(key, limit, offset) {
+  const url = baseUrl + 'product/search'
+  let data = {
+    key,
+    limit,
+    offset
+  }
+  data = urlencoded(data)
+
+  return axios.post(url, data, {
+    headers
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
 /* ********************************** */
 const baseUrl_2 = 'http://music.163.com/api/'
 const headers_2 = {
@@ -213,6 +240,14 @@ apiRoutes.get('/promotion/product/get', function (req, res) {
     res.json(data)
   })
 })
+
+apiRoutes.post('/product/search', function (req, res) {
+  console.log(req.body)
+  let { key, limit, offset } = req.body
+  getSearchResult(key, limit, offset).then(data => {
+    res.json(data)
+  })
+})
 /* ********************************** */
 
 apiRoutes.get('/vipmall/albumproduct/list', function (req, res) {
@@ -229,6 +264,9 @@ apiRoutes.get('/vipmall/albumproduct/salelist', function (req, res) {
   })
 })
 
+app.use(bodyParser.json()) // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+// app.use(multer()) // for parsing multipart/form-data
 app.use('/api', apiRoutes)
 
 // app.use(express.static('./dist'))
