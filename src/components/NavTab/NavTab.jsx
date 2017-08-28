@@ -47,6 +47,13 @@ class NavTab extends React.Component {
     })
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { currentIndex } = nextProps
+    this.setState({
+      currentIndex
+    })
+  }
+
   clickHandle(index) {
     this.props.onTabChange && this.props.onTabChange(index)
     this.setState({

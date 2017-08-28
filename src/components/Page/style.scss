@@ -1,0 +1,51 @@
+.m-page {
+  margin: 20px 0;
+  padding-bottom: 30px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  .zbtn,
+  .zpgi {
+    margin: 0 1px 0 2px;
+    display: inline-block;
+    border: 1px solid #ededed;
+    border-radius: 2px;
+    vertical-align: middle;
+    &:hover {
+      border-color: #666;
+    }
+  }
+  .zbtn {
+    height: 30px;
+    line-height: 30px;
+    color: #333;
+    text-align: left;
+    padding: 0;
+    &.disabled,
+    &.disabled:hover {
+      background-color: #ccc;
+      color: #cacaca;
+      cursor: default;
+      border-color: #ededed;
+    }
+  }
+  .zprv {
+    width: 30px;
+    background: url(http://s2.music.126.net/store/web/img/prev2.png?3fdee4f5ac222e54edb6907901accebd);
+  }
+  .zpgi {
+    height: 30px;
+    padding: 0 12px;
+    background-color: #fff;
+    line-height: 32px;
+    &.selected {
+      background-color: #d33a31;
+      color: #fff;
+      cursor: default;
+    }
+  }
+  .znxt {
+    width: 30px;
+    background: url(http://s2.music.126.net/store/web/img/next2.png?5fb6131b2073f921e747e1802f098491);
+  }
+}

@@ -7,4 +7,14 @@
     width: 100%;
     margin: 0;
   }
+  .recommend-list {
+    margin-top: 66px;
+    .mid-border {
+      padding-bottom: 20px;
+      border-bottom: 1px solid #333;
+      span {
+        font-size: 18px;
+      }
+    }
+  }
 }

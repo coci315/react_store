@@ -139,12 +139,20 @@ export function getPromotion(productId, clientType = 1) {
 }
 
 // 获取搜索结果
-export function getSearchResult(key, limit = 60, offset = 0) {
+export function getSearchResult(key, sort = '', limit = 60, offset = 0) {
   const url = baseUrl + 'product/search'
   let data = {
     key,
     limit,
     offset
+  }
+  if (sort) {
+    data = {
+      key,
+      sort,
+      limit,
+      offset
+    }
   }
   data = urlencoded(data)
 

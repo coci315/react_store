@@ -128,12 +128,20 @@ function getPromotion(productId, clientType) {
   })
 }
 
-function getSearchResult(key, limit, offset) {
+function getSearchResult(key, sort, limit, offset) {
   const url = baseUrl + 'product/search'
   let data = {
     key,
     limit,
     offset
+  }
+  if (sort) {
+    data = {
+      key,
+      sort,
+      limit,
+      offset
+    }
   }
   data = urlencoded(data)
 
@@ -243,8 +251,8 @@ apiRoutes.get('/promotion/product/get', function (req, res) {
 
 apiRoutes.post('/product/search', function (req, res) {
   console.log(req.body)
-  let { key, limit, offset } = req.body
-  getSearchResult(key, limit, offset).then(data => {
+  let { key, sort, limit, offset } = req.body
+  getSearchResult(key, sort, limit, offset).then(data => {
     res.json(data)
   })
 })
