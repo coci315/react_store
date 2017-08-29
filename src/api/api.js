@@ -139,20 +139,20 @@ export function getPromotion(productId, clientType = 1) {
 }
 
 // 获取搜索结果
-export function getSearchResult(key, sort = '', limit = 60, offset = 0) {
+export function getSearchResult({ key, sort, category_1, limit = 60, offset = 0 }) {
   const url = baseUrl + 'product/search'
   let data = {
-    key,
     limit,
     offset
   }
+  if (key) {
+    data.key = key
+  }
   if (sort) {
-    data = {
-      key,
-      sort,
-      limit,
-      offset
-    }
+    data.sort = sort
+  }
+  if (category_1) {
+    data.category_1 = category_1
   }
   data = urlencoded(data)
 
@@ -167,4 +167,18 @@ function urlencoded(obj) {
     str += ('&' + key + '=' + encodeURIComponent(obj[key]))
   }
   return str.slice(1)
+}
+
+// 通过category1Id获取分类列表
+export function getListByCategory1Id(category1Id) {
+  const url = baseUrl + 'sortedAndFilter/list'
+  const params = {
+    category1Id
+  }
+
+  return axios.get(url, {
+    params
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
 }

@@ -100,7 +100,7 @@ class Search extends React.Component {
   }
 
   _getSearchResult(key, sort, limit = 60, offset = 0) {
-    getSearchResult(key, sort, limit, offset).then(res => {
+    getSearchResult({ key, sort, limit, offset }).then(res => {
       console.log(res)
       const { products, size } = res
       this.setState({

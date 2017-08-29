@@ -128,25 +128,39 @@ function getPromotion(productId, clientType) {
   })
 }
 
-function getSearchResult(key, sort, limit, offset) {
+function getSearchResult({ key, sort, category_1, limit, offset }) {
   const url = baseUrl + 'product/search'
   let data = {
-    key,
     limit,
     offset
   }
+  if (key) {
+    data.key = key
+  }
   if (sort) {
-    data = {
-      key,
-      sort,
-      limit,
-      offset
-    }
+    data.sort = sort
+  }
+  if (category_1) {
+    data.category_1 = category_1
   }
   data = urlencoded(data)
 
   return axios.post(url, data, {
     headers
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
+function getListByCategory1Id(category1Id) {
+  const url = baseUrl + 'sortedAndFilter/list'
+  const params = {
+    category1Id
+  }
+
+  return axios.get(url, {
+    headers,
+    params
   }).then(res => {
     return Promise.resolve(res.data)
   })
@@ -251,8 +265,15 @@ apiRoutes.get('/promotion/product/get', function (req, res) {
 
 apiRoutes.post('/product/search', function (req, res) {
   console.log(req.body)
-  let { key, sort, limit, offset } = req.body
-  getSearchResult(key, sort, limit, offset).then(data => {
+  let { key, sort, category_1, limit, offset } = req.body
+  getSearchResult({ key, sort, category_1, limit, offset }).then(data => {
+    res.json(data)
+  })
+})
+
+apiRoutes.get('/sortedAndFilter/list', function (req, res) {
+  const { category1Id } = req.query
+  getListByCategory1Id(category1Id).then(data => {
     res.json(data)
   })
 })

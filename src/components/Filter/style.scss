@@ -1,0 +1,118 @@
+.m-filter {
+  width: 100%;
+  margin: 20px auto 0 auto;
+  .g-wrap {
+    width: 1098px;
+    margin: 0 auto;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    text-align: center;
+  }
+  .tags {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .end {
+    border: none;
+  }
+  .title {
+    float: left;
+    width: 80px;
+    line-height: 44px;
+    color: #999;
+    font-weight: 600;
+  }
+  ul {
+    float: left;
+    width: 1018px;
+    &.brand {
+      width: 938px;
+    }
+    li {
+      float: left;
+      line-height: 44px;
+      padding: 0 4px;
+      color: #333;
+      .tag {
+        height: 24px;
+        padding: 3px 15px;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      .z-slt {
+        color: #fff;
+        background-color: #000;
+        text-decoration: none;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+    .diy {
+      .txt {
+        padding: 0 10px 0 20px;
+      }
+      .to {
+        padding: 0 4px;
+        vertical-align: top;
+        color: rgba(0, 0, 0, 0.15);
+      }
+      .btn {
+        height: 20px;
+        padding: 3px 13px;
+        font-weight: 600;
+        background-color: #d33a31;
+        color: #fff;
+        cursor: pointer;
+        &.z-dis {
+          background-color: #ccc;
+          color: #fff;
+          cursor: text;
+        }
+      }
+    }
+    input {
+      width: 66px;
+      height: 20px;
+      font-size: 14px;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      -webkit-appearance: none;
+    }
+  }
+  .more,
+  .less {
+    float: left;
+    width: 60px;
+    padding-right: 20px;
+    height: 24px;
+    margin-top: 10px;
+    cursor: pointer;
+    i {
+      float: right;
+      width: 14px;
+      height: 7px;
+      margin-top: 6px;
+      background: url(http://s2.music.126.net/store/web/img/sprite/ar.png?09607b2a8d24b7a86ca205e739bed086) no-repeat 0 9999px;
+    }
+  }
+  .more i {
+    background-position: -24px -0px;
+  }
+  .less i {
+    background-position: 0px -0px;
+  }
+  .btnwrap {
+    .btn {
+      display: inline-block;
+      width: 90px;
+      height: 30px;
+      line-height: 30px;
+      margin: 14px auto 20px auto;
+      border: 1px solid rgba(0, 0, 0, 0.5);
+      font-weight: 500;
+      cursor: pointer;
+      color: #333;
+    }
+  }
+}
