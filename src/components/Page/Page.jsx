@@ -45,19 +45,19 @@ class Page extends React.Component {
     )
   }
 
-  // componentDidMount() {
-  //   const { crtIndex } = this.props
-  //   this.setState({
-  //     crtIndex
-  //   })
-  // }
+  componentDidMount() {
+    const { crtIndex } = this.props
+    this.setState({
+      crtIndex
+    })
+  }
 
-  // componentWillReceiveProps(nextProps) {
-  //   const { crtIndex } = nextProps
-  //   this.setState({
-  //     crtIndex
-  //   })
-  // }
+  componentWillReceiveProps(nextProps) {
+    const { crtIndex } = nextProps
+    this.setState({
+      crtIndex
+    })
+  }
 
   handleClickOnPage(index) {
     this.setPage(index)
@@ -94,13 +94,13 @@ class Page extends React.Component {
 
 Page.propTypes = {
   pagesNum: PropTypes.number,
-  // crtIndex: PropTypes.number,
+  crtIndex: PropTypes.number,
   onPageChange: PropTypes.func
 }
 
 Page.defaultProps = {
-  pagesNum: 0
-  // crtIndex: 0
+  pagesNum: 0,
+  crtIndex: 0
 }
 
 export default Page

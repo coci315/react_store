@@ -139,7 +139,7 @@ export function getPromotion(productId, clientType = 1) {
 }
 
 // 获取搜索结果
-export function getSearchResult({ key, sort, category_1, limit = 60, offset = 0 }) {
+export function getSearchResult({ key, sort, category_1, category_2, brand, price_from, price_to, limit = 60, offset = 0 }) {
   const url = baseUrl + 'product/search'
   let data = {
     limit,
@@ -153,6 +153,18 @@ export function getSearchResult({ key, sort, category_1, limit = 60, offset = 0 
   }
   if (category_1) {
     data.category_1 = category_1
+  }
+  if (category_2) {
+    data.category_2 = category_2
+  }
+  if (brand) {
+    data.brand = brand
+  }
+  if (price_from) {
+    data.price_from = price_from
+  }
+  if (price_to) {
+    data.price_to = price_to
   }
   data = urlencoded(data)
 

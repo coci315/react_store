@@ -4,8 +4,12 @@ import { getUrlQuery } from '../../common/js/util.js'
 import { getListByCategory1Id, getSearchResult } from '../../api/api.js'
 import Bread from '../../components/Bread/Bread'
 import Filter from '../../components/Filter/Filter'
+import NavTab from '../../components/NavTab/NavTab'
+import ProductList from '../../components/ProductList/ProductList'
+import Page from '../../components/Page/Page'
 
 import './style.scss'
+const limit = 60
 class VariousKind extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -14,11 +18,21 @@ class VariousKind extends React.Component {
       category_1: '',
       brands: [],
       kinds: [],
-      prices: []
+      prices: [],
+      tabs: ['综合', '价格低到高', '价格高到低'],
+      sorts: ['', 'price_asc', 'price_desc'],
+      currentTabIndex: 0,
+      products: [],
+      size: 0,
+      currentPageIndex: 0,
+      selectedBrands: [],
+      selectedKinds: [],
+      selectedPrice: ''
     }
   }
   render() {
-    const { category_1, brands, kinds, prices } = this.state
+    const { category_1, brands, kinds, prices, tabs, sorts, currentTabIndex, products, size, currentPageIndex } = this.state
+    const pagesNum = Math.ceil(size / limit)
     return (
       <div className="m-variouskind">
         <div className="g-bd f-cb">
@@ -29,6 +43,21 @@ class VariousKind extends React.Component {
               prices={prices}
               onFilterChange={this.onFilterChange.bind(this)}
             />
+            <div className="m-productlist">
+              <NavTab tabs={tabs}
+                currentIndex={currentTabIndex}
+                onTabChange={this.onTabChange.bind(this)}
+              />
+              <ProductList products={products} />
+              {
+                pagesNum > 1 ? (
+                  <Page pagesNum={pagesNum}
+                    crtIndex={currentPageIndex}
+                    onPageChange={this.onPageChange.bind(this)}
+                  />
+                ) : ''
+              }
+            </div>
           </div>
         </div>
 
@@ -43,13 +72,43 @@ class VariousKind extends React.Component {
       category_1
     })
     this._getListByCategory1Id(category1Id)
+    this._getSearchResult({ category_1 })
   }
 
   onFilterChange({ selectedBrands, selectedKinds, selectedPrice }) {
     console.log(selectedBrands)
     console.log(selectedKinds)
     console.log(selectedPrice)
+    this.setState({
+      selectedBrands,
+      selectedKinds,
+      selectedPrice,
+      size: 0,
+      currentPageIndex: 0
+    })
+    this._reGetSR()
   }
+
+  onTabChange(index) {
+    this.setState({
+      currentTabIndex: index
+    })
+    this._reGetSR()
+  }
+
+  onPageChange(index) {
+    const { currentPageIndex } = this.state
+    if (currentPageIndex === index) {
+      return
+    } else {
+      window.scrollTo(0, 0)
+      this.setState({
+        currentPageIndex: index
+      })
+      this._reGetSR()
+    }
+  }
+
 
   _getListByCategory1Id(category1Id) {
     getListByCategory1Id(category1Id).then(res => {
@@ -67,6 +126,37 @@ class VariousKind extends React.Component {
         prices
       })
     })
+  }
+
+  _getSearchResult({ key, sort, category_1, category_2, brand, price_from, price_to, limit, offset }) {
+    getSearchResult({ key, sort, category_1, category_2, brand, price_from, price_to, limit, offset }).then(res => {
+      console.log(res)
+      const { products, size } = res
+      this.setState({
+        products,
+        size
+      })
+    })
+  }
+
+  _reGetSR() {
+    setTimeout(() => {
+      const { category_1, sorts, currentTabIndex, currentPageIndex, selectedBrands, selectedKinds, selectedPrice } = this.state
+      const sort = sorts[currentTabIndex]
+      const offset = limit * currentPageIndex
+      const brand = selectedBrands.join()
+      const category_2 = selectedKinds.join()
+      const price_from = selectedPrice.split('~')[0]
+      const price_to = selectedPrice.split('~')[1]
+      getSearchResult({ sort, category_1, category_2, brand, price_from, price_to, limit, offset }).then(res => {
+        console.log(res)
+        const { products, size } = res
+        this.setState({
+          products,
+          size
+        })
+      })
+    }, 20)
   }
 }
 
