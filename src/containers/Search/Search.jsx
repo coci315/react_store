@@ -7,6 +7,7 @@ import Bread from '../../components/Bread/Bread'
 import NavTab from '../../components/NavTab/NavTab'
 import ProductList from '../../components/ProductList/ProductList'
 import Page from '../../components/Page/Page'
+import NoResult from '../../components/NoResult/NoResult'
 
 import './style.scss'
 const sorts = ['', 'price_asc', 'price_desc']
@@ -19,13 +20,15 @@ class Search extends React.Component {
       key: '',
       tabs: ['综合', '价格低到高', '价格高到低'],
       currentTabIndex: 0,
+      currentPageIndex: 0,
       products: [],
       hotProducts: [],
-      size: 0
+      size: 0,
+      noResult: false
     }
   }
   render() {
-    const { key, tabs, products, hotProducts, currentTabIndex, size } = this.state
+    const { key, tabs, products, hotProducts, currentTabIndex, currentPageIndex, size, noResult } = this.state
     const pagesNum = Math.ceil(size / limit)
     return (
       <div className="m-search">
@@ -33,11 +36,23 @@ class Search extends React.Component {
           <Bread currentText={key} />
           <div className="g-main">
             <div className="m-searchlist">
-              <NavTab tabs={tabs} currentIndex={currentTabIndex} onTabChange={this.onTabChange.bind(this)} />
-              <ProductList products={products} />
+              {
+                noResult ? (
+                  ''
+                ) : (
+                    <NavTab tabs={tabs} currentIndex={currentTabIndex} onTabChange={this.onTabChange.bind(this)} />
+                  )
+              }
+              {
+                noResult ? (
+                  <NoResult />
+                ) : (
+                    <ProductList products={products} />
+                  )
+              }
               {
                 pagesNum > 1 ? (
-                  <Page pagesNum={pagesNum} onPageChange={this.onPageChange.bind(this)} />
+                  <Page pagesNum={pagesNum} crtIndex={currentPageIndex} onPageChange={this.onPageChange.bind(this)} />
                 ) : ''
               }
             </div>
@@ -72,7 +87,9 @@ class Search extends React.Component {
       products: [],
       hotProducts: [],
       currentTabIndex: 0,
-      size: 0
+      currentPageIndex: 0,
+      size: 0,
+      noResult: false
     })
     const key = getUrlQuery('q')
     this.setState({
@@ -82,31 +99,42 @@ class Search extends React.Component {
   }
 
   onTabChange(index) {
-    const { key } = this.state
+    const { key, currentPageIndex } = this.state
     this.setState({
       currentTabIndex: index
     })
-    this._getSearchResult(key, sorts[index])
+    const offset = limit * currentPageIndex
+    this._getSearchResult(key, sorts[index], limit, offset)
   }
 
   onPageChange(index) {
-    window.scrollTo(0, 0)
-    const { key, currentTabIndex } = this.state
-    const offset = limit * index
-    this.setState({
-      products: []
-    })
-    this._getSearchResult(key, sorts[currentTabIndex], limit, offset)
+    const { key, currentTabIndex, currentPageIndex } = this.state
+    if (currentPageIndex === index) {
+      return
+    } else {
+      window.scrollTo(0, 0)
+      const offset = limit * index
+      this.setState({
+        currentPageIndex: index
+      })
+      this._getSearchResult(key, sorts[currentTabIndex], limit, offset)
+    }
+
   }
 
   _getSearchResult(key, sort, limit = 60, offset = 0) {
     getSearchResult({ key, sort, limit, offset }).then(res => {
       console.log(res)
-      const { products, size } = res
+      const { products, size, all } = res
       this.setState({
         products,
         size
       })
+      if (all === 0) {
+        this.setState({
+          noResult: true
+        })
+      }
       if (size <= 4) {
         this._getHotProduct()
       }
