@@ -193,9 +193,11 @@ class Filter extends React.Component {
 
   handleChangeOnPriceFrom(e) {
     let price_from = e.target.value
-    const last = price_from.slice(-1)
-    if (!/\d/.test(last)) {
-      price_from = price_from(0, -1)
+    if (price_from !== '') {
+      const last = price_from.slice(-1)
+      if (!/\d/.test(last)) {
+        price_from = price_from.slice(0, -1)
+      }
     }
     this.setState({
       price_from
@@ -208,9 +210,11 @@ class Filter extends React.Component {
 
   handleChangeOnPriceTo(e) {
     let price_to = e.target.value
-    const last = price_to.slice(-1)
-    if (!/\d/.test(last)) {
-      price_to = price_to(0, -1)
+    if (price_to !== '') {
+      const last = price_to.slice(-1)
+      if (!/\d/.test(last)) {
+        price_to = price_to.slice(0, -1)
+      }
     }
     this.setState({
       price_to
