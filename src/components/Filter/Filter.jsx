@@ -129,6 +129,15 @@ class Filter extends React.Component {
                     onClick={this.handleClickOnDiyPrice.bind(this)}
                   >确定</span>
                 </li>
+                {
+                  (price_from !== '' && price_to !== '') ? (
+                    <li className="diy">
+                      <span className="btn" onClick={this.handleClickOnResetBtn.bind(this)}>
+                        重置
+                    </span>
+                    </li>
+                  ) : ''
+                }
               </ul>
             </div>
           </div>
@@ -187,6 +196,15 @@ class Filter extends React.Component {
     const price = price_from + '~' + price_to
     this.setState({
       selectedPrice: price
+    })
+    this._emitChange()
+  }
+
+  handleClickOnResetBtn() {
+    this.setState({
+      selectedPrice: '',
+      price_from: '',
+      price_to: ''
     })
     this._emitChange()
   }
