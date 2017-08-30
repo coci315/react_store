@@ -7,6 +7,7 @@ import Filter from '../../components/Filter/Filter'
 import NavTab from '../../components/NavTab/NavTab'
 import ProductList from '../../components/ProductList/ProductList'
 import Page from '../../components/Page/Page'
+import NoResult from '../../components/NoResult/NoResult'
 
 import './style.scss'
 const limit = 60
@@ -27,11 +28,12 @@ class VariousKind extends React.Component {
       currentPageIndex: 0,
       selectedBrands: [],
       selectedKinds: [],
-      selectedPrice: ''
+      selectedPrice: '',
+      noResult: false
     }
   }
   render() {
-    const { category_1, brands, kinds, prices, tabs, sorts, currentTabIndex, products, size, currentPageIndex } = this.state
+    const { category_1, brands, kinds, prices, tabs, sorts, currentTabIndex, products, size, currentPageIndex, noResult } = this.state
     const pagesNum = Math.ceil(size / limit)
     return (
       <div className="m-variouskind">
@@ -48,7 +50,14 @@ class VariousKind extends React.Component {
                 currentIndex={currentTabIndex}
                 onTabChange={this.onTabChange.bind(this)}
               />
-              <ProductList products={products} />
+              {
+                noResult ? (
+                  <NoResult />
+                ) : (
+                    <ProductList products={products} />
+                  )
+              }
+
               {
                 pagesNum > 1 ? (
                   <Page pagesNum={pagesNum}
@@ -131,15 +140,23 @@ class VariousKind extends React.Component {
   _getSearchResult({ key, sort, category_1, category_2, brand, price_from, price_to, limit, offset }) {
     getSearchResult({ key, sort, category_1, category_2, brand, price_from, price_to, limit, offset }).then(res => {
       console.log(res)
-      const { products, size } = res
+      const { products, size, all } = res
       this.setState({
         products,
         size
       })
+      if (all === 0) {
+        this.setState({
+          noResult: true
+        })
+      }
     })
   }
 
   _reGetSR() {
+    this.setState({
+      noResult: false
+    })
     setTimeout(() => {
       const { category_1, sorts, currentTabIndex, currentPageIndex, selectedBrands, selectedKinds, selectedPrice } = this.state
       const sort = sorts[currentTabIndex]
@@ -150,11 +167,16 @@ class VariousKind extends React.Component {
       const price_to = selectedPrice.split('~')[1]
       getSearchResult({ sort, category_1, category_2, brand, price_from, price_to, limit, offset }).then(res => {
         console.log(res)
-        const { products, size } = res
+        const { products, size, all } = res
         this.setState({
           products,
           size
         })
+        if (all === 0) {
+          this.setState({
+            noResult: true
+          })
+        }
       })
     }, 20)
   }
