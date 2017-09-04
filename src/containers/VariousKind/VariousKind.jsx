@@ -8,6 +8,7 @@ import NavTab from '../../components/NavTab/NavTab'
 import ProductList from '../../components/ProductList/ProductList'
 import Page from '../../components/Page/Page'
 import NoResult from '../../components/NoResult/NoResult'
+import ToTop from '../../components/ToTop/ToTop'
 
 import './style.scss'
 const limit = 60
@@ -69,7 +70,7 @@ class VariousKind extends React.Component {
             </div>
           </div>
         </div>
-
+        <ToTop />
       </div>
     )
   }

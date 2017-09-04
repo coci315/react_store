@@ -14,7 +14,7 @@ class RouterMap extends React.Component {
     render() {
         return (
             <Router history={this.props.history}>
-                <Route path='/' component={App}>
+                <Route path='/' component={App} onChange={this.handleChange.bind(this)}>
                     <IndexRoute component={Home} />
                     <Route path='/search' component={Search} />
                     <Route path='/dgalbum' component={Dgalbum} />
@@ -25,6 +25,10 @@ class RouterMap extends React.Component {
                 </Route>
             </Router>
         )
+    }
+
+    handleChange() {
+        window.scrollTo(0, 0)
     }
 }
 

@@ -1,0 +1,75 @@
+.m-2top {
+  display: block;
+  position: fixed;
+  left: 50%;
+  margin-left: 570px;
+  z-index: 98;
+  top: 50%;
+  margin-top: -138px;
+  width: 60px;
+  height: auto;
+  font-size: 12px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  text-align: center;
+  .m-item {
+    display: block;
+    height: 58px;
+    border: 1px solid transparent;
+    border-bottom: 1px solid #e5e5e5;
+    cursor: pointer;
+    &.shopcar {
+      color: #333;
+      position: relative;
+    }
+    &.kefu {
+      color: #333;
+    }
+  }
+  .shopcar .icon,
+  .kefu .icon,
+  .m-back {
+    background: url(http://s2.music.126.net/store/web/img/sprite/totop.png?d8aa75018cef2e6f36ca42f96115ff32) no-repeat 0 9999px;
+  }
+  .shopcar {
+    .icon {
+      display: block;
+      width: 20px;
+      height: 20px;
+      margin: 11px 0 5px 17px;
+      background-position: 0px -71px;
+    }
+    .num {
+      top: -34px;
+      left: 21px;
+      width: 18px;
+      height: 18px;
+      line-height: 18px;
+      color: #fff;
+      background: url(http://s2.music.126.net/store/web/img/sprite/modules.png?35ffae10deff16b624f753861adbe80e) no-repeat -156px -158px;
+    }
+  }
+  .kefu {
+    .icon {
+      display: block;
+      width: 20px;
+      height: 20px;
+      margin: 11px 0 5px 19px;
+      background-position: 0px -101px;
+    }
+  }
+  .m-unclick {
+    cursor: default;
+    span {
+      display: block;
+      margin-top: 13px;
+      line-height: 1.5;
+      color: #666;
+    }
+  }
+  .m-back {
+    height: 35px;
+    border: none;
+    background-position: -70px -0px;
+  }
+}
