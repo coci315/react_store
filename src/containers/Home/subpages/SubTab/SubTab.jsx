@@ -13,12 +13,12 @@ class SubTab extends React.Component {
       <div className="subtab clearfix">
         <div className="subj pad-right">
           <Link to="/column?id=55001">
-            <img src="http://p4.music.126.net/mxHv8frh9SIlPNrsS_GJiQ==/18535567023046157.jpg" alt="" />
+            <img src="http://p4.music.126.net/48Da_74tR8YqP0pvvvpZxg==/19143596951529145.jpg" alt="" />
           </Link>
         </div>
         <div className="subj ">
-          <Link to="/column?id=62001">
-            <img src="http://p3.music.126.net/fh-SBHnxdQZ-uKVtKZOKcw==/18597139674204175.jpg" alt="" />
+          <Link to="/column?id=68001">
+            <img src="http://p4.music.126.net/37433Ah-LuLbidEPjs-u2A==/19078725765440648.jpg" alt="" />
           </Link>
         </div>
       </div>

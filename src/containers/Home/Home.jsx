@@ -6,6 +6,7 @@ import HomeTab from './subpages/HomeTab/HomeTab'
 import SubTab from './subpages/SubTab/SubTab'
 import ProductList from '../../components/ProductList/ProductList'
 import { Link } from 'react-router'
+import ToTop from '../../components/ToTop/ToTop'
 
 import './style.scss'
 class Home extends React.Component {
@@ -62,6 +63,7 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
+        <ToTop initTop={674} />
       </div>
     )
   }

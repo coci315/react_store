@@ -3,6 +3,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 import { getUrlQuery } from '../../common/js/util.js'
 import { getColumnProduct } from '../../api/api.js'
 import ProductList from '../../components/ProductList/ProductList'
+import ToTop from '../../components/ToTop/ToTop'
 
 import './style.scss'
 class Column extends React.Component {
@@ -30,6 +31,7 @@ class Column extends React.Component {
             <ProductList products={products} />
           </div>
         </div>
+        <ToTop />
       </div>
     )
   }

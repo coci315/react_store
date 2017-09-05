@@ -9,14 +9,15 @@ class ToTop extends React.Component {
     super(props, context)
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
     this.state = {
-      showFlag: false
+      showFlag: false,
+      styleObj: {}
     }
   }
   render() {
     const { productCount } = this.props
-    const { showFlag } = this.state
+    const { showFlag, styleObj } = this.state
     return (
-      <div className="m-2top">
+      <div className="m-2top" style={styleObj}>
         <div className="m-item m-unclick">
           <span>
             100%
@@ -48,6 +49,7 @@ class ToTop extends React.Component {
   }
 
   componentDidMount() {
+    this.setInitStyle()
     scrollHandle = this.scrollHandle.bind(this)
     window.addEventListener('scroll', scrollHandle)
   }
@@ -57,12 +59,19 @@ class ToTop extends React.Component {
   }
 
   scrollHandle() {
+    const { changePoint } = this.props
     clearTimeout(this.timer)
     this.timer = setTimeout(() => {
       if (window.scrollY > 200) {
         this.show()
       } else {
         this.hide()
+      }
+
+      if (window.scrollY > changePoint) {
+        this.setFixedStyle()
+      } else {
+        this.setInitStyle()
       }
     }, 100)
   }
@@ -93,14 +102,38 @@ class ToTop extends React.Component {
       showFlag: false
     })
   }
+
+  setInitStyle() {
+    const { initTop } = this.props
+    if (initTop > -1) {
+      const styleObj = { position: 'absolute', top: initTop, marginTop: 0, bottom: 'auto' }
+      this.setState({
+        styleObj
+      })
+    }
+  }
+
+  setFixedStyle() {
+    const { initTop } = this.props
+    if (initTop > -1) {
+      const styleObj = { position: 'fixed', top: '50%', marginTop: -138, bottom: 'auto' }
+      this.setState({
+        styleObj
+      })
+    }
+  }
 }
 
 ToTop.propTypes = {
-  productCount: PropTypes.number
+  productCount: PropTypes.number,
+  initTop: PropTypes.number,
+  changePoint: PropTypes.number,
 }
 
 ToTop.defaultProps = {
-  productCount: 0
+  productCount: 0,
+  initTop: -1,
+  changePoint: 310
 }
 
 export default ToTop

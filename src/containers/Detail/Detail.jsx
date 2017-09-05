@@ -11,6 +11,7 @@ import Coupon from '../../components/Coupon/Coupon'
 import Service from '../../components/Service/Service'
 import Layer from '../../components/Layer/Layer'
 import TopBar from '../../components/TopBar/TopBar'
+import ToTop from '../../components/ToTop/ToTop'
 
 import './style.scss'
 class Detail extends React.Component {
@@ -152,6 +153,7 @@ class Detail extends React.Component {
             <TopBar name={product.name} picUrls={picUrls} currentPrice={currentPrice} />
           ) : ''
         }
+        <ToTop />
       </div>
     )
   }

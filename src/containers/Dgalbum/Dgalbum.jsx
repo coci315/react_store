@@ -3,6 +3,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 import { getNewAlbum, getSaleAlbum } from '../../api/api.js'
 import NewAlbumList from '../../components/NewAlbumList/NewAlbumList'
 import SaleAlbumList from '../../components/SaleAlbumList/SaleAlbumList'
+import ToTop from '../../components/ToTop/ToTop'
 
 import './style.scss'
 class Dgalbum extends React.Component {
@@ -28,6 +29,7 @@ class Dgalbum extends React.Component {
             <SaleAlbumList albums={saleAlbums} />
           </div>
         </div>
+        <ToTop />
       </div>
     )
   }
