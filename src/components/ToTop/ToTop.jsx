@@ -14,7 +14,7 @@ class ToTop extends React.Component {
     }
   }
   render() {
-    const { productCount } = this.props
+    const { productCount, noCart } = this.props
     const { showFlag, styleObj } = this.state
     return (
       <div className="m-2top" style={styleObj}>
@@ -28,15 +28,19 @@ class ToTop extends React.Component {
         <div className="m-item m-unclick">
           <span>七天无理由退货</span>
         </div>
-        <div className="m-item shopcar">
-          <span>
-            <i className="icon"></i>
-            <span className="f-pr">
-              购物车
-              <span className="f-pa num">{productCount}</span>
-            </span>
-          </span>
-        </div>
+        {
+          noCart ? '' : (
+            <div className="m-item shopcar">
+              <span>
+                <i className="icon"></i>
+                <span className="f-pr">
+                  购物车
+                <span className="f-pa num">{productCount}</span>
+                </span>
+              </span>
+            </div>
+          )
+        }
         <div className="m-item kefu">
           <i className="icon"></i>
           <span className="f-pr">客服</span>
@@ -128,12 +132,14 @@ ToTop.propTypes = {
   productCount: PropTypes.number,
   initTop: PropTypes.number,
   changePoint: PropTypes.number,
+  noCart: PropTypes.bool
 }
 
 ToTop.defaultProps = {
   productCount: 0,
   initTop: -1,
-  changePoint: 310
+  changePoint: 310,
+  noCart: false
 }
 
 export default ToTop

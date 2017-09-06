@@ -9,6 +9,7 @@ import NotFound from '../containers/NotFound/NotFound'
 import Dgalbum from '../containers/Dgalbum/Dgalbum'
 import Column from '../containers/Column/Column'
 import VariousKind from '../containers/VariousKind/VariousKind'
+import Cart from '../containers/Cart/Cart'
 
 class RouterMap extends React.Component {
     render() {
@@ -19,6 +20,7 @@ class RouterMap extends React.Component {
                     <Route path='/search' component={Search} />
                     <Route path='/dgalbum' component={Dgalbum} />
                     <Route path='/column' component={Column} />
+                    <Route path='/cart' component={Cart} />
                     <Route path='/variouskind' component={VariousKind} />
                     <Route path='/detail/:id' component={Detail} />
                     <Route path='*' component={NotFound} />

@@ -106,7 +106,10 @@ class Detail extends React.Component {
                             </div>
                           ) : ''
                         }
-                        <Count />
+                        <div className="m-count">
+                          <p className="number">数量：</p>
+                          <Count />
+                        </div>
                       </div>
                       <Service serviceType={product.serviceType}
                         businessName={product.businessName}

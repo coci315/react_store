@@ -194,3 +194,12 @@ export function getListByCategory1Id(category1Id) {
     return Promise.resolve(res.data)
   })
 }
+
+// 获取购物车
+export function getCart() {
+  const url = baseUrl + 'cart/product/getall'
+
+  return axios.get(url).then(res => {
+    return Promise.resolve(res.data)
+  })
+}

@@ -15,29 +15,26 @@ class Count extends React.Component {
     const { count } = this.state
     const { min, max } = this.props
     return (
-      <div className="m-count">
-        <p className="number">数量：</p>
-        <div className="u-counter f-fl">
-          <a href="javascript:;"
-            className={count === min ? "btn btn-dis" : "btn"}
-            onClick={this.minusOne.bind(this)}
-          >
-            <i className="u-icn u-icn-27"></i>
-          </a>
-          <span className="tot">
-            <input type="text"
-              className="f-fs14"
-              value={count}
-              onChange={this.changeHandle.bind(this)}
-            />
-          </span>
-          <a href="javascript:;"
-            className={count === max ? "btn btn-dis" : "btn"}
-            onClick={this.plusOne.bind(this)}
-          >
-            <i className="u-icn u-icn-28"></i>
-          </a>
-        </div>
+      <div className="u-counter f-fl">
+        <a href="javascript:;"
+          className={count === min ? "btn btn-dis" : "btn"}
+          onClick={this.minusOne.bind(this)}
+        >
+          <i className="u-icn u-icn-27"></i>
+        </a>
+        <span className="tot">
+          <input type="text"
+            className="f-fs14"
+            value={count}
+            onChange={this.changeHandle.bind(this)}
+          />
+        </span>
+        <a href="javascript:;"
+          className={count === max ? "btn btn-dis" : "btn"}
+          onClick={this.plusOne.bind(this)}
+        >
+          <i className="u-icn u-icn-28"></i>
+        </a>
       </div>
     )
   }

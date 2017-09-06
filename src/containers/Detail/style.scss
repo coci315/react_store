@@ -130,4 +130,15 @@
     float: right;
     width: 340px;
   }
+  .m-count {
+    margin-top: 17px;
+    overflow: hidden;
+    .number {
+      float: left;
+      height: 30px;
+      line-height: 30px;
+      margin-right: 30px;
+      color: #999;
+    }
+  }
 }
