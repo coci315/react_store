@@ -39,6 +39,20 @@ class Count extends React.Component {
     )
   }
 
+  componentDidMount() {
+    const { count } = this.props
+    this.setState({
+      count
+    })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { count } = nextProps
+    this.setState({
+      count
+    })
+  }
+
   changeHandle(e) {
     const { min, max } = this.props
     let count = e.target.value
@@ -60,6 +74,7 @@ class Count extends React.Component {
   minusOne() {
     let { count } = this.state
     const { min } = this.props
+    if (count === min) return
     count -= 1
     if (count < min) {
       count = min
@@ -70,6 +85,7 @@ class Count extends React.Component {
   plusOne() {
     let { count } = this.state
     const { max } = this.props
+    if (count === max) return
     count += 1
     if (count > max) {
       count = max
@@ -88,12 +104,14 @@ class Count extends React.Component {
 Count.propTypes = {
   min: PropTypes.number,
   max: PropTypes.number,
+  count: PropTypes.number,
   onChange: PropTypes.func
 }
 
 Count.defaultProps = {
   min: 1,
-  max: 50
+  max: 50,
+  count: 1
 }
 
 export default Count

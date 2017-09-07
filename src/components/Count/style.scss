@@ -8,6 +8,10 @@
     width: 34px;
     height: 30px;
     border-left: 1px solid #e5e5e5;
+    &:hover {
+      background: #f7f7f7;
+      cursor: pointer;
+    }
     i {
       position: relative;
       left: 3px;
@@ -18,6 +22,10 @@
     }
   }
   .btn-dis {
+    &:hover {
+      background: #fff;
+      cursor: default;
+    }
     i {
       opacity: 0.3;
       filter: alpha(opacity=30);

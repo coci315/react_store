@@ -203,3 +203,43 @@ export function getCart() {
     return Promise.resolve(res.data)
   })
 }
+
+// 获取总价
+export function getTotalMoney(cartIds) {
+  const url = baseUrl + 'cart/product/calmoney'
+  let data = {
+    cartIds
+  }
+  data = urlencoded(data)
+
+  return axios.post(url, data).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
+// 更新购物车
+export function updateCart(cartId, num) {
+  const url = baseUrl + 'cart/product/update'
+  let data = {
+    cartId,
+    num
+  }
+  data = urlencoded(data)
+
+  return axios.post(url, data).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
+// 删除购物车商品
+export function delSelect(cartIds) {
+  const url = baseUrl + 'cart/product/delselect'
+  let data = {
+    cartIds
+  }
+  data = urlencoded(data)
+
+  return axios.post(url, data).then(res => {
+    return Promise.resolve(res.data)
+  })
+}

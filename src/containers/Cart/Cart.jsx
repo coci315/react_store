@@ -29,11 +29,15 @@ class Cart extends React.Component {
               <span>购物车</span>
             </div>
           </div>
-          <ShopCart selectNum={selectNum}
-            freeFreightMoney={freeFreightMoney}
-            itemDatas={itemDatas}
-            invalidItemDatas={invalidItemDatas}
-          />
+          {
+            itemDatas.length ? (
+              <ShopCart selectNum={selectNum}
+                freeFreightMoney={freeFreightMoney}
+                itemDatas={itemDatas}
+                invalidItemDatas={invalidItemDatas}
+              />
+            ) : ''
+          }
           <div className="mid-border">
             <span className="mid-txt2">热门推荐</span>
           </div>
