@@ -55,10 +55,18 @@ class ShopCart extends React.Component {
                 <div className="f-fr f-mgr20">
                   {
                     freeFreightMoney ? (
-                      <div>
-                        <div className="f-fl icon"><i></i></div>
-                        <div className="f-fl txt">全场满<em className="s-fcTheme">￥{freeFreightMoney}</em>免运费</div>
-                      </div>
+                      diff > 0 ? (
+                        <Link to={"/column?id=27001&title=凑单活动页&fmoney=" + freeFreightMoney + "&emoney=" + diff}>
+                          <div className="f-fl icon"><i></i></div>
+                          <div className="f-fl txt">全场满<em className="s-fcTheme">￥{freeFreightMoney}</em>免运费（还差￥{diff}）</div>
+                          去凑单&nbsp;>
+                        </Link>
+                      ) : (
+                          <div>
+                            <div className="f-fl icon"><i></i></div>
+                            <div className="f-fl txt">全场满<em className="s-fcTheme">￥{freeFreightMoney}</em>免运费</div>
+                          </div>
+                        )
                     ) : ''
                   }
                 </div>
