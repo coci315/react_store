@@ -30,7 +30,7 @@ class Cart extends React.Component {
             </div>
           </div>
           {
-            itemDatas.length ? (
+            freeFreightMoney ? (
               <ShopCart selectNum={selectNum}
                 freeFreightMoney={freeFreightMoney}
                 itemDatas={itemDatas}

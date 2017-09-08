@@ -5,7 +5,8 @@
   }
   .first .right i,
   .first .drop i,
-  .first .delete i {
+  .first .delete i,
+  .empty i {
     background: url(http://s2.music.126.net/store/web/img/sprite/cart2.png?8f76c56768a978f6a93faf02fab0b626) no-repeat 0 9999px;
   }
   .head {
@@ -222,6 +223,24 @@
       background: #fff;
       opacity: 0.7;
       filter: alpha(opacity=70);
+    }
+  }
+  .empty {
+    width: 320px;
+    height: 150px;
+    margin: 50px auto 0 auto;
+    text-align: center;
+    i {
+      display: block;
+      width: 140px;
+      height: 125px;
+      margin: 0 auto 10px auto;
+      padding-left: 14px;
+      background-position: 0px -0px;
+    }
+    a:hover {
+      text-decoration: underline;
+      color: #333;
     }
   }
 }
