@@ -14,11 +14,12 @@ class ShopCart extends React.Component {
       itemDatas: [],
       invalidItemDatas: [],
       isSelectAll: false,
-      totalMoney: 0
+      totalMoney: 0,
+      showInvalid: false
     }
   }
   render() {
-    const { itemDatas, invalidItemDatas, isSelectAll, totalMoney } = this.state
+    const { itemDatas, invalidItemDatas, isSelectAll, totalMoney, showInvalid } = this.state
     const { selectNum, freeFreightMoney } = this.props
     let selectedTotalNum = this._getSelectedTotalNum()
     if (selectedTotalNum > 99) {
@@ -59,7 +60,7 @@ class ShopCart extends React.Component {
           {
             itemDatas.map((item, index) => {
               return (
-                <li className="clearfix" key={item.productId}>
+                <li className="clearfix" key={item.cartId}>
                   <div className="check f-fl">
                     <i className={item.selected ? "checkbox z-checked" : "checkbox"}
                       onClick={this.clickHandleOnCheck.bind(this, index)}
@@ -128,6 +129,76 @@ class ShopCart extends React.Component {
             </div>
           </li>
         </ul>
+        {
+          invalidItemDatas.length ? (
+            <ul className="invalid" style={showInvalid ? {} : { border: 0 }}>
+              <li className="first">
+                <a className={showInvalid ? "drop" : "right"}
+                  onClick={this.toggleShowInvalid.bind(this)}
+                >
+                  <i></i>
+                  <span className="f-fs14 s-fc4">
+                    失效商品&nbsp;(&nbsp;{invalidItemDatas.length}&nbsp;)&nbsp;
+                </span>
+                </a>
+                <a className="delete s-fc4 f-fr"
+                  onClick={this.clickHandleOnClearInvalid.bind(this)}
+                >
+                  <span className="f-fs14">
+                    <i className="f-pr"></i>
+                    &nbsp;清空全部失效商品
+                </span>
+                </a>
+              </li>
+              {
+                showInvalid ? (
+                  invalidItemDatas.map((item, index) => {
+                    return (
+                      <li className="clearfix f-pr" key={item.cartId}>
+                        <div className="check f-fl">
+                          <i className="checkbox"></i>
+                        </div>
+                        <div className="cnt f-fl">
+                          <div className="coverwrap f-fl">
+                            <Link to={"/detail/" + item.productId} className="f-pr zdex f-ib">
+                              <img src={item.goodSkuData.picUrl + "?param=80y80"} />
+                            </Link>
+                          </div>
+                          <div className="msg f-fl">
+                            <Link to={"/detail/" + item.productId} className="f-pr zdex f-ib">
+                              <p className="tit f-thide">{item.productName}</p>
+                            </Link>
+                            <p className="sku f-thide">
+                              {item.goodSkuData.attrs.map(attr => {
+                                return attr.attrValue
+                              }).join(' ')}
+                            </p>
+                          </div>
+                          <div className="price f-fl f-tc">
+                            ￥<em>{item.signleMoney}</em>
+                          </div>
+                          <div className="ctrl f-fl f-pr f-tc">
+                            <Count count={item.num}
+                              max={1}
+                            />
+                            {
+                              item.sellableNum === 0 ? (
+                                <div className="s-fcTheme f-mgt30 f-fs12">商品已售罄</div>
+                              ) : ''
+                            }
+                          </div>
+                          <div className="price line f-fl f-tc">￥{item.itemMoney}</div>
+                          <div className="delete f-fl" onClick={this.clickHandleOnDeleteInvalid.bind(this, index)}></div>
+                        </div>
+                        <div className="cover f-pa"></div>
+                      </li>
+                    )
+                  })
+                ) : ''
+              }
+            </ul>
+          ) : ''
+        }
       </div>
     )
   }
@@ -203,6 +274,30 @@ class ShopCart extends React.Component {
     })
   }
 
+  clickHandleOnDeleteInvalid(index) {
+    let invalidItemDatas = this.state.invalidItemDatas.slice()
+    const cartId = invalidItemDatas[index].cartId
+    invalidItemDatas = invalidItemDatas.filter(item => {
+      return item.cartId !== cartId
+    })
+    this.setState({
+      invalidItemDatas
+    })
+    delSelect(cartId).then(res => {
+      this._getTotalMoney()
+    })
+  }
+
+  clickHandleOnClearInvalid() {
+    const cartIds = this._getAllInvalidCartIds()
+    this.setState({
+      invalidItemDatas: []
+    })
+    delSelect(cartIds).then(res => {
+      this._getTotalMoney()
+    })
+  }
+
   changeHandleOnCount(index, count) {
     console.log(index + '---' + count)
     const itemDatas = this.state.itemDatas.slice()
@@ -226,6 +321,13 @@ class ShopCart extends React.Component {
         }, 20)
       })
     }, 500)
+  }
+
+  toggleShowInvalid() {
+    let showInvalid = !this.state.showInvalid
+    this.setState({
+      showInvalid
+    })
   }
 
   _initSelected(itemDatas) {
@@ -264,6 +366,12 @@ class ShopCart extends React.Component {
         arr.push(item.cartId)
       }
     })
+    return arr.join()
+  }
+
+  _getAllInvalidCartIds() {
+    const { invalidItemDatas } = this.state
+    const arr = invalidItemDatas.map(item => item.cartId)
     return arr.join()
   }
 

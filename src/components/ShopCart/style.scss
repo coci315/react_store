@@ -3,6 +3,11 @@
   .first .icon i {
     background: url(http://s2.music.126.net/store/web/img/sprite/cart.png?b62260f299ec7e1034c55c7f1020dfe6) no-repeat 0 9999px;
   }
+  .first .right i,
+  .first .drop i,
+  .first .delete i {
+    background: url(http://s2.music.126.net/store/web/img/sprite/cart2.png?8f76c56768a978f6a93faf02fab0b626) no-repeat 0 9999px;
+  }
   .head {
     height: 66px;
     line-height: 66px;
@@ -80,6 +85,10 @@
       &:hover {
         background: url(http://s2.music.126.net/store/web/img/cha_hover.png?ce0f6841df1ee41793dcbb57430d86b1);
       }
+    }
+    .zdex {
+      z-index: 99;
+      opacity: 0.7;
     }
   }
   .coverwrap {
@@ -164,6 +173,55 @@
       .check .checkbox {
         top: 5px;
       }
+    }
+  }
+  .invalid {
+    margin-top: 30px;
+    .first {
+      a {
+        vertical-align: sub;
+        span {
+          position: relative;
+          top: -2px;
+        }
+      }
+      .right {
+        i {
+          display: inline-block;
+          width: 10px;
+          height: 15px;
+          margin: 0 25px;
+          background-position: 0px -191px;
+        }
+      }
+      .drop {
+        i {
+          display: inline-block;
+          width: 15px;
+          height: 10px;
+          margin: 0 22px;
+          background-position: -26px -166px;
+        }
+      }
+      .delete {
+        margin-right: 20px;
+        i {
+          top: 3px;
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          background-position: 0px -165px;
+        }
+      }
+    }
+    .cover {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #fff;
+      opacity: 0.7;
+      filter: alpha(opacity=70);
     }
   }
 }
