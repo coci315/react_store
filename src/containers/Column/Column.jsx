@@ -4,6 +4,7 @@ import { getUrlQuery } from '../../common/js/util.js'
 import { getColumnProduct } from '../../api/api.js'
 import ProductList from '../../components/ProductList/ProductList'
 import ToTop from '../../components/ToTop/ToTop'
+import Bread from '../../components/Bread/Bread'
 
 import './style.scss'
 class Column extends React.Component {
@@ -17,10 +18,30 @@ class Column extends React.Component {
   }
   render() {
     const { bannerSrc, products } = this.state
+    const id = getUrlQuery('id')
+    const fmoney = getUrlQuery('fmoney')
+    const emoney = getUrlQuery('emoney')
     return (
       <div className="m-column">
         <div className="g-bd f-cb">
           <div className="g-main">
+            {
+              id === '27001' ? (
+                <Bread indexLink="/cart" indexText="购物车" currentText="活动凑单">
+                  <span className="f-fr right">
+                    <span className="f-fl icon">
+                      <i className="f-pr"></i>
+                    </span>
+                    <span className="f-fl f-fs14">
+                      全场满
+                      <em className="s-fcTheme">￥{fmoney}</em>
+                      免运费
+                      {emoney ? (' ( 还差￥' + emoney + ' )') : ''}
+                    </span>
+                  </span>
+                </Bread>
+              ) : ''
+            }
             {
               bannerSrc ? (
                 <div className="m-banner f-pr">

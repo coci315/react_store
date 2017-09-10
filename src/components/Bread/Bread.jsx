@@ -10,16 +10,22 @@ class Bread extends React.Component {
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
   render() {
-    const { currentText } = this.props
+    const { currentText, indexText, indexLink } = this.props
     return (
       <div className="m-bread">
         <div className="block">
-          <span><Link to="/">首页</Link></span>
+          <span><Link to={indexLink}>{indexText}</Link></span>
           <span className="pointer">
             <i></i>
             {currentText}
           </span>
-          <div className="share f-fr">分享</div>
+          {
+            this.props.children ? (
+              React.Children.map(this.props.children, child => child)
+            ) : (
+                <div className="share f-fr">分享</div>
+              )
+          }
         </div>
       </div>
     )
@@ -27,11 +33,15 @@ class Bread extends React.Component {
 }
 
 Bread.propTypes = {
-  currentText: PropTypes.string
+  currentText: PropTypes.string,
+  indexText: PropTypes.string,
+  indexLink: PropTypes.string
 }
 
 Bread.defaultProps = {
-  currentText: ''
+  currentText: '',
+  indexText: '首页',
+  indexLink: '/'
 }
 
 export default Bread
