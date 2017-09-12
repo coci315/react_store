@@ -181,7 +181,7 @@ function getListByCategory1Id(category1Id) {
 const headersWithCookie = {
   host: 'music.163.com',
   referer: 'http://music.163.com/store/cart',
-  cookie: '_ntes_nnid=fa8fd66c9cea037e407c5fb80778fd9c,1504598515827; _ntes_nuid=fa8fd66c9cea037e407c5fb80778fd9c; __s_=1; __utma=94650624.1841906027.1504598570.1504598570.1504849196.2; __utmb=94650624.2.10.1504849196; __utmc=94650624; __utmz=94650624.1504598570.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); NTES_SESS=ryQlkBTAd5lqm61_Q_yfWRwmLzvs2UF1bzs.99XbsF8BWh3VWELSHaFNiS37N.MoZlZ1JgsFWa37MqMAIS9SNFIo_76yphxOBOG9Z8CgBDaGcBWu17BP.MefWEqUufZ4J16XDLryDzXDxWaz6PbmfYvOChTxRKzmG2Cefe85Pp9qf5z5kSkGIkOwS; S_INFO=1504849382|0|3&80##|test20161231; P_INFO="test20161231@163.com|1504849382|0|unireg|00&99|null&null&null#zhj&330100#10#0#0|&0||test20161231@163.com"; mail_psc_fingerprint=bc390cf22bcc72a037e1958569850ace; _ngd_tid=4dLXBtzbIXCUKs0B3zFDKbsFvNF1Hr40; __remember_me=true; MUSIC_U=504718d75a86eadd47fa299cc0c2e3525053be85f4706fa66156fb43e8111988bb41c85cb43800bd396ee72f20006f549ba95f7cbdcf6cf4f2f513a9c38b5dc7; __csrf=2fe7b4d4367c11482eeccd6d887b30dd; jsessionid-cpta=kkU0YHWrUA9v1tVaaC3cGWtfSq50ZFlyLfZ88C35Z0zzaTGvl442uFZxMOSNmktF4zPh7YI5te2jFZ22GZ%2FV5DPnLA427gezUJRtalYl%5Cuc6yD5nxWXmnJY83OQlWfhGaNfaPTa%5C7DIe3VK85DRpJCuSo%2F5S%2B8Q5voIRr0zc1YZ%2Bcvga%3A1504850333729; c98xpt_=30; NETEASE_WDA_UID=586616988#|#1504849468033; JSESSIONID-WYYY=1OYMts%2BVR56w%5CMaQKH%2FlS1%2FU%2FWwzfZVXDElUHCaVYk4yMqnqbWZjVSb4foYu8Sak9Zx7HeFBU%2BIi5xudHBVwxf0iVKf5EF7kZyZzr5sDWe6SnVOBrr5c%2BHv9%2BIDGkXb8h%2BIx%5CaCW8xPjX%5Chdql%2FiiKHD8xz0%5C%2B4X5rzSJi2%2Fa%5CWmROiR%3A1504851465032; _iuqxldmzr_=31'
+  cookie: '_ntes_nnid=fa8fd66c9cea037e407c5fb80778fd9c,1504598515827; _ntes_nuid=fa8fd66c9cea037e407c5fb80778fd9c; __s_=1; NTES_SESS=ryQlkBTAd5lqm61_Q_yfWRwmLzvs2UF1bzs.99XbsF8BWh3VWELSHaFNiS37N.MoZlZ1JgsFWa37MqMAIS9SNFIo_76yphxOBOG9Z8CgBDaGcBWu17BP.MefWEqUufZ4J16XDLryDzXDxWaz6PbmfYvOChTxRKzmG2Cefe85Pp9qf5z5kSkGIkOwS; S_INFO=1504849382|0|3&80##|test20161231; P_INFO="test20161231@163.com|1504849382|0|unireg|00&99|null&null&null#zhj&330100#10#0#0|&0||test20161231@163.com"; mail_psc_fingerprint=bc390cf22bcc72a037e1958569850ace; _ngd_tid=4dLXBtzbIXCUKs0B3zFDKbsFvNF1Hr40; jsessionid-cpta=kkU0YHWrUA9v1tVaaC3cGWtfSq50ZFlyLfZ88C35Z0zzaTGvl442uFZxMOSNmktF4zPh7YI5te2jFZ22GZ%2FV5DPnLA427gezUJRtalYl%5Cuc6yD5nxWXmnJY83OQlWfhGaNfaPTa%5C7DIe3VK85DRpJCuSo%2F5S%2B8Q5voIRr0zc1YZ%2Bcvga%3A1504850333729; c98xpt_=30; NETEASE_WDA_UID=586616988#|#1504849468033; MUSIC_U=504718d75a86eadd47fa299cc0c2e3525053be85f4706fa6382c04e9904f25a31a96c0829d3f617908d740636b37f442d031e699b7018e7eaf9e62a8590fd08a; __remember_me=true; __csrf=3930afa3bc923ae45014e20a03f5c426; __utma=94650624.1841906027.1504598570.1504598570.1504849196.2; __utmc=94650624; __utmz=94650624.1504598570.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); JSESSIONID-WYYY=9hGoXbtmMBEsI3HAT3VWHqaafAn2xXpsnYTXGiBYKrUGn3eiemMkKPic3%2FOIWY8%5Cd9%2BIcG2NkkJRJjNnCDceifEmUiA8%5COZu1nB2i%2FShM3tc5fkOxS5n9CIlBXZ5mqf2%2Fw%5CQWXxw0FvAYDcjMoYcXIr8IZYlQhn0pgdDQ%5CA7e5mjzxsM%3A1505109917944; _iuqxldmzr_=31'
 }
 
 function getCart() {
@@ -236,6 +236,50 @@ function delSelect(cartIds) {
 
   return axios.post(url, data, {
     headers
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
+
+function getOrderKey(cartIds, snapshotIds, goodMoneys) {
+  const url = baseUrl + 'cart/order/create_before'
+  let data = {
+    cartIds,
+    snapshotIds,
+    goodMoneys
+  }
+  data = urlencoded(data)
+  const headers = headersWithCookie
+
+  return axios.post(url, data).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
+function getAddressLevel(level) {
+  const url = baseUrl + 'address/getAddressLevel'
+  const params = {
+    level
+  }
+
+  return axios.get(url, {
+    headers,
+    params
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
+function getNextAddress(id) {
+  const url = baseUrl + 'address/nextaddress'
+  const params = {
+    id
+  }
+
+  return axios.get(url, {
+    headers,
+    params
   }).then(res => {
     return Promise.resolve(res.data)
   })
@@ -376,6 +420,27 @@ apiRoutes.post('/cart/product/update', function (req, res) {
 apiRoutes.post('/cart/product/delselect', function (req, res) {
   let { cartIds } = req.body
   delSelect(cartIds).then(data => {
+    res.json(data)
+  })
+})
+
+apiRoutes.post('/cart/order/create_before', function (req, res) {
+  let { cartIds, snapshotIds, goodMoneys } = req.body
+  getOrderKey(cartIds, snapshotIds, goodMoneys).then(data => {
+    res.json(data)
+  })
+})
+
+apiRoutes.get('/address/getAddressLevel', function (req, res) {
+  const { level } = req.query
+  getAddressLevel(level).then(data => {
+    res.json(data)
+  })
+})
+
+apiRoutes.get('/address/nextaddress', function (req, res) {
+  const { id } = req.query
+  getNextAddress(id).then(data => {
     res.json(data)
   })
 })

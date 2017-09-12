@@ -243,3 +243,46 @@ export function delSelect(cartIds) {
     return Promise.resolve(res.data)
   })
 }
+
+// 获取订单号
+export function getOrderKey(cartIds, snapshotIds, goodMoneys) {
+  const url = baseUrl + 'cart/order/create_before'
+  let data = {
+    cartIds,
+    snapshotIds,
+    goodMoneys
+  }
+  data = urlencoded(data)
+
+  return axios.post(url, data).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
+// 获取地址
+export function getAddressLevel(level) {
+  const url = baseUrl + 'address/getAddressLevel'
+  const params = {
+    level
+  }
+
+  return axios.get(url, {
+    params
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
+// 获取下一级地址
+export function getNextAddress(id) {
+  const url = baseUrl + 'address/nextaddress'
+  const params = {
+    id
+  }
+
+  return axios.get(url, {
+    params
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}

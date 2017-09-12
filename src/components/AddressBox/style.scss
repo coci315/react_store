@@ -1,0 +1,103 @@
+.m-address-box {
+  .u-txt {
+    height: 19px;
+    margin: 0;
+    padding: 5px 6px 6px;
+    border: 1px solid #cdcdcd;
+    border-radius: 2px;
+    line-height: 19px;
+    background: url(http://s2.music.126.net/store/web/img/area.png?969299c2e037ae39bff5b27a10f3a471) repeat-x;
+  }
+  .u-addr-empty {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    .bggray span {
+      margin-left: 20px;
+    }
+    .addressform {
+      margin-left: 20px;
+    }
+    .ztr {
+      position: relative;
+      z-index: 1;
+      zoom: 1;
+      margin-top: 20px;
+      margin-right: 10px;
+    }
+    .indexh {
+      z-index: 2;
+      .u-slt {
+        vertical-align: middle;
+        margin-right: 10px;
+      }
+    }
+  }
+  .bggray {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background: url(http://s2.music.126.net/store/web/img/bgg.png?57e5821ee8cbc2fdcb4b36713e3ce766) repeat-x;
+  }
+  .addressform {
+    height: 380px;
+    .ztr {
+      display: none;
+      position: absolute;
+      span.th {
+        width: 62px;
+        line-height: 32px;
+        font-size: 14px;
+        margin-right: 12px;
+        vertical-align: top;
+        text-align: left;
+      }
+      .u-txt {
+        width: 296px;
+        height: 22px;
+        line-height: 22px;
+        font-size: 14px;
+        background: none;
+        border: 1px solid #e5e5e5;
+        border-radius: 0px;
+      }
+    }
+    .name {
+      display: block;
+      left: 0;
+      top: 0;
+      .u-txt {
+        width: 258px;
+      }
+    }
+    .phone {
+      display: block;
+      left: 363px;
+      top: 0;
+    }
+    .address {
+      display: block;
+      left: 0;
+      top: 62px;
+      .u-slt {
+        width: 198px;
+        height: 35px;
+        border: 1px solid #e5e5e5;
+        background: transparent;
+        .curr {
+          width: 198px;
+          height: 35px;
+          line-height: 35px;
+        }
+        .btn {
+          width: 147px;
+          background: transparent;
+          top: 3px;
+        }
+        ul {
+          z-index: 9999;
+          width: 198px;
+        }
+      }
+    }
+  }
+}

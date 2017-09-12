@@ -1,9 +1,9 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 import Count from '../../components/Count/Count'
-import { getTotalMoney, updateCart, delSelect } from '../../api/api.js'
+import { getTotalMoney, updateCart, delSelect, getOrderKey } from '../../api/api.js'
 
 import './style.scss'
 class ShopCart extends React.Component {
@@ -130,7 +130,9 @@ class ShopCart extends React.Component {
                     <div className="coverwrap f-fl">全选</div>
                     <div className="product f-fl">已选择 <em className="s-fcTheme">{selectedTotalNum}</em> 件商品</div>
                   </div>
-                  <div className={totalMoney === 0 ? "paybtn f-fr z-dis" : "paybtn f-fr"}>结算</div>
+                  <div className={totalMoney === 0 ? "paybtn f-fr z-dis" : "paybtn f-fr"}
+                    onClick={this.clickHandleOnPay.bind(this)}
+                  >结算</div>
                   <div className="f-fr">
                     <span className="s-fc4">
                       {
@@ -322,6 +324,11 @@ class ShopCart extends React.Component {
     })
   }
 
+  clickHandleOnPay() {
+    if (!this.state.totalMoney) return
+    this._getOrderKey()
+  }
+
   changeHandleOnCount(index, count) {
     console.log(index + '---' + count)
     const itemDatas = this.state.itemDatas.slice()
@@ -393,6 +400,28 @@ class ShopCart extends React.Component {
     return arr.join()
   }
 
+  _getSelectedSnapShotIds() {
+    const { itemDatas } = this.state
+    const arr = []
+    itemDatas.forEach(item => {
+      if (item.selected) {
+        arr.push(item.goodSkuData.snapShotId)
+      }
+    })
+    return arr.join()
+  }
+
+  _getSelectedGoodMoneys() {
+    const { itemDatas } = this.state
+    const arr = []
+    itemDatas.forEach(item => {
+      if (item.selected) {
+        arr.push(item.itemMoney)
+      }
+    })
+    return arr.join()
+  }
+
   _getAllInvalidCartIds() {
     const { invalidItemDatas } = this.state
     const arr = invalidItemDatas.map(item => item.cartId)
@@ -414,6 +443,16 @@ class ShopCart extends React.Component {
         totalMoney: 0
       })
     }
+  }
+
+  _getOrderKey() {
+    const cateIds = this._getSelectedCartIds()
+    const snapshotIds = this._getSelectedSnapShotIds()
+    const goodMoneys = this._getSelectedGoodMoneys()
+    getOrderKey(cateIds, snapshotIds, goodMoneys).then(res => {
+      console.log(res)
+      browserHistory.push('/order/confirm')
+    })
   }
 
 }
