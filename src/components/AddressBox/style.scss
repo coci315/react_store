@@ -23,6 +23,25 @@
       zoom: 1;
       margin-top: 20px;
       margin-right: 10px;
+      .area {
+        width: 295px;
+        height: 99px;
+      }
+      .setdefault {
+        margin-left: 77px;
+        margin-top: 8px;
+        i {
+          position: relative;
+          top: -1px;
+        }
+        span {
+          position: relative;
+          top: 2px;
+          color: #666;
+          margin-left: 10px;
+          font-size: 14px;
+        }
+      }
     }
     .indexh {
       z-index: 2;
@@ -30,6 +49,12 @@
         vertical-align: middle;
         margin-right: 10px;
       }
+    }
+    label {
+      margin-left: 24px;
+    }
+    .pdh {
+      padding: 20px 0 30px 77px;
     }
   }
   .bggray {
@@ -59,6 +84,14 @@
         background: none;
         border: 1px solid #e5e5e5;
         border-radius: 0px;
+      }
+      .area {
+        width: 606px;
+        height: 99px;
+      }
+      .setdefault {
+        margin-left: 52px;
+        margin-top: 10px;
       }
     }
     .name {
@@ -98,6 +131,37 @@
           width: 198px;
         }
       }
+    }
+    .detail {
+      display: block;
+      width: 700px;
+      left: 0;
+      top: 124px;
+    }
+    .pdh {
+      position: absolute;
+      left: 0;
+      top: 300px;
+    }
+    .err {
+      padding-left: 74px;
+    }
+  }
+  .u-tips-err {
+    position: relative;
+    z-index: 1;
+    zoom: 1;
+    display: block;
+    line-height: 24px;
+    margin-left: 26px;
+    color: #e33232;
+    i {
+      position: absolute;
+      left: -20px;
+      top: 4px;
+      width: 16px;
+      height: 16px;
+      background: url(http://s2.music.126.net/store/web/img/fin1.png?cece0bd54eab02321baf09a7fa2c824c);
     }
   }
 }

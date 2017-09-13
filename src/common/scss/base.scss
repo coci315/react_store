@@ -207,6 +207,12 @@
 		background-position: -128px -506px;
 	}
 
+	.u-icn-checked {
+		width: 20px;
+		height: 20px;
+		background-position: -120px -186px;
+	}
+
 	.u-btn {
 		display: inline-block;
 		height: 40px;
@@ -267,4 +273,12 @@
 
 	.u-btn-new2 {
 		width: 140px;
+	}
+
+	.u-btn-new160 {
+		width: 160px;
+	}
+
+	[hidefocus] {
+		outline: none;
 	}

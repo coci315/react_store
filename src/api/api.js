@@ -286,3 +286,33 @@ export function getNextAddress(id) {
     return Promise.resolve(res.data)
   })
 }
+
+// 保存地址
+export function saveAddress(name, cellphone, detailAddress, addressId) {
+  const url = baseUrl + 'point/saveAddress'
+  let data = {
+    name,
+    cellphone,
+    detailAddress,
+    addressId
+  }
+
+  data = urlencoded(data)
+
+  return axios.post(url, data).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
+// 缓存地址
+export function cacheAddress(id) {
+  const url = baseUrl + 'point/address/cacheaddress'
+  let data = {
+    id
+  }
+  data = urlencoded(data)
+
+  return axios.post(url, data).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
