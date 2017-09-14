@@ -19,6 +19,7 @@ export function loadFromLocal(key, def) {
   return ret === undefined ? def : ret
 }
 
+// 搜索历史
 const SH_MAX_LENGTH = 5
 export function loadSearchHistory() {
   return loadFromLocal('search-history', [])
@@ -47,5 +48,31 @@ export function delSearchHistory(item) {
   if (index > -1) {
     history.splice(index, 1)
     saveToLocal('search-history', history)
+  }
+}
+
+// 收获地址
+const ADDR_MAX_LENGTH = 10
+
+export function loadAddress() {
+  return loadFromLocal('address-list', [])
+}
+
+export function addAddress(item) {
+  let addressList = loadAddress()
+  if (addressList.length < ADDR_MAX_LENGTH) {
+    addressList.push(item)
+    saveToLocal('address-list', addressList)
+  }
+}
+
+export function delAddress(item) {
+  let addressList = loadAddress()
+  const index = addressList.findIndex(addr => {
+    return addr.id === item.id
+  })
+  if (index > -1) {
+    addressList.splice(index, 1)
+    saveToLocal('address-list', addressList)
   }
 }
