@@ -5,13 +5,17 @@
 
 .u-slt {
   position: relative;
+  width: 100px;
+  height: 28px;
+  background-position: 0 -47px;
+  cursor: pointer;
   .curr {
     display: block;
     width: 60px;
     padding-left: 7px;
     line-height: 28px;
   }
-  .btn {
+  .button {
     display: block;
     position: absolute;
     top: 0;

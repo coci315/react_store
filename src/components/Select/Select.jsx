@@ -19,7 +19,7 @@ class Select extends React.Component {
     return (
       <div className="u-slt f-ib">
         <span className="curr f-thide">{data.length ? data[curIndex].locationName : ''}</span>
-        <a href="javascript:;" className="btn" onClick={this.toggleShow.bind(this)}>
+        <a href="javascript:;" className="button" onClick={this.toggleShow.bind(this)}>
           <i className="u-icn u-icn-slt"></i>
         </a>
         <ul className={showFlag ? "" : "f-hide"}>

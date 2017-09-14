@@ -1,11 +1,9 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import PropTypes from 'prop-types'
-// import Select from '../../components/Select/Select'
-// import { getAddressLevel, getNextAddress, saveAddress, cacheAddress } from '../../api/api.js'
 import { loadAddress, addAddress } from '../../common/js/cache.js'
-// import { Address } from '../../common/js/address.js'
 import EmptyAddress from './subpages/EmptyAddress/EmptyAddress'
+import AddressDisplay from './subpages/AddressDisplay/AddressDisplay'
 
 import './style.scss'
 class AddressBox extends React.Component {
@@ -24,7 +22,7 @@ class AddressBox extends React.Component {
         <div className="m-address-front">
           {
             addressList.length ? (
-              <div>123</div>
+              <AddressDisplay addressList={addressList} />
             ) : (
                 <EmptyAddress />
               )

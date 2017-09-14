@@ -1,0 +1,142 @@
+.m-layerwrap {
+  .mask {
+    position: fixed;
+    z-index: 9997;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0);
+  }
+}
+
+.m-layer {
+  position: fixed;
+  z-index: 9998;
+  left: -9999px;
+  top: -9999px;
+  width: 650px;
+  border-radius: 4px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  border: none;
+  background-color: #fff;
+  .zbar {
+    position: relative;
+    z-index: 10;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px 4px 0 0;
+    background-color: #f6f6f6;
+    cursor: move;
+    user-select: none;
+  }
+  .zttl {
+    margin: 0;
+    height: 60px;
+    line-height: 60px;
+    padding-left: 20px;
+    border-radius: 3px 3px 0 0;
+    font-weight: 600;
+    font-size: 16px;
+    color: #666;
+    background-position: 50% 0;
+  }
+  .zcnt {
+    padding-top: 30px;
+    border-width: 0 1px 1px;
+    border-radius: 0 0 4px 4px;
+    background: #fff;
+  }
+  .zcnt2 {
+    padding: 20px;
+  }
+  .zcls {
+    position: absolute;
+    z-index: 20;
+    top: 21px;
+    right: 20px;
+    width: 18px;
+    height: 18px;
+    overflow: hidden;
+    text-indent: -9999px;
+    cursor: pointer;
+    background: url(http://s2.music.126.net/store/web/img/chag.png?2a9367c4472e9017ba1ce0a801b8f34e);
+  }
+  .ztr {
+    position: relative;
+    z-index: 1;
+    zoom: 1;
+    margin-top: 20px;
+    margin-right: 10px;
+    span.th {
+      width: 61px;
+      line-height: 32px;
+      font-size: 14px;
+      margin-right: 12px;
+      vertical-align: top;
+      text-align: right;
+    }
+    .u-txt {
+      width: 296px;
+      height: 22px;
+      line-height: 22px;
+      font-size: 14px;
+      background: none;
+      border: 1px solid #e5e5e5;
+      border-radius: 0px;
+    }
+    .u-txt-err {
+      border: 1px solid #e0756e;
+    }
+    .err {
+      z-index: 1;
+      bottom: 8px;
+      height: 16px;
+      line-height: 16px;
+      margin-left: 78px;
+      margin-top: 10px;
+      font-size: 12px;
+      color: #e33232;
+      i {
+        position: relative;
+        top: -2px;
+        width: 16px;
+        height: 16px;
+        font-size: 14px;
+        margin-right: 6px;
+        vertical-align: middle;
+        background: url(http://s2.music.126.net/store/web/img/sprite/gralico.png?a3c63c3c0cc38f46ea9c83f4a1c6f729) no-repeat 0 0;
+      }
+    }
+    .area {
+      width: 295px;
+      height: 99px;
+    }
+    .setdefault {
+      margin-left: 77px;
+      margin-top: 8px;
+    }
+  }
+  .indexh {
+    z-index: 2;
+    .u-slt {
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+  }
+  .u-slt {
+    border: 1px solid #e5e5e5;
+    background: transparent;
+    width: 96px;
+    .button {
+      background: transparent;
+      top: 3px;
+    }
+    ul {
+      top: 29px;
+      left: -1px;
+    }
+  }
+  .pdh {
+    padding: 20px 0 30px 77px;
+  }
+}

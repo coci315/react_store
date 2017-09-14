@@ -86,8 +86,18 @@
 		-webkit-line-clamp: 2;
 	}
 
+	.f-blk {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
 	.f-tc {
 		text-align: center;
+	}
+
+	.f-mgt5 {
+		margin-top: 5px;
 	}
 
 	.f-mgt10 {
@@ -96,6 +106,10 @@
 
 	.f-mgr20 {
 		margin-right: 20px;
+	}
+
+	.f-mgl20 {
+		margin-left: 20px;
 	}
 
 	.w {
@@ -118,6 +132,10 @@
 
 	.f-tid {
 		text-indent: -9999px;
+	}
+
+	.f-fs12 {
+		font-size: 12px;
 	}
 
 	.f-fs14 {
