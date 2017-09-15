@@ -318,6 +318,20 @@ function cacheAddress(id) {
   })
 }
 
+function lookupAddress(addressId) {
+  const url = baseUrl + 'address/mlookupAddress'
+  const params = {
+    addressId
+  }
+
+  return axios.get(url, {
+    headers,
+    params
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}
+
 /* ********************************** */
 const baseUrl_2 = 'http://music.163.com/api/'
 const headers_2 = {
@@ -488,6 +502,13 @@ apiRoutes.post('/point/saveAddress', function (req, res) {
 apiRoutes.post('/point/address/cacheaddress', function (req, res) {
   const { id } = req.body
   cacheAddress(id).then(data => {
+    res.json(data)
+  })
+})
+
+apiRoutes.get('/address/mlookupAddress', function (req, res) {
+  const { addressId } = req.query
+  lookupAddress(addressId).then(data => {
     res.json(data)
   })
 })

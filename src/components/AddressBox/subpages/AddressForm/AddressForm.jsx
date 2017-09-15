@@ -26,11 +26,13 @@ class AddressForm extends React.Component {
       showPhoneErr: false,
       phoneErrText: '',
       showAddressErr: false,
-      addressErrText: ''
+      addressErrText: '',
+      isSetDefault: false
     }
   }
   render() {
-    const { dataLevelOne, dataCity, dataDistrict, indexDataLevelOne, indexDataCity, indexDataDistrict, name, cellphone, detailAddress, showNameErr, showPhoneErr, showAddressErr, nameErrText, phoneErrText, addressErrText } = this.state
+    const { address } = this.props
+    const { dataLevelOne, dataCity, dataDistrict, indexDataLevelOne, indexDataCity, indexDataDistrict, name, cellphone, detailAddress, showNameErr, showPhoneErr, showAddressErr, nameErrText, phoneErrText, addressErrText, isSetDefault } = this.state
     return (
       <form className="m-addressform">
         <div className="ztr name">
@@ -101,12 +103,18 @@ class AddressForm extends React.Component {
               </div>
             ) : ''
           }
-          <div className="setdefault">
-            <label>
-              <i className="u-icn u-icn-checked"></i>
-              <span>设为默认地址</span>
-            </label>
-          </div>
+          {
+            (address && address.prop) ? '' : (
+              <div className="setdefault">
+                <label>
+                  <i className={isSetDefault ? "u-icn u-icn-checked" : "u-icn u-icn-nochecked"}
+                    onClick={this.toggleDefault.bind(this)}
+                  ></i>
+                  <span>设为默认地址</span>
+                </label>
+              </div>
+            )
+          }
         </div>
         <div className="pdh">
           <a href="javascript:;"
@@ -120,6 +128,16 @@ class AddressForm extends React.Component {
 
   componentDidMount() {
     this.timer = setTimeout(() => {
+      const { address } = this.props
+      if (address) {
+        console.log(address)
+        const { cellphone, detailAddress, name } = address
+        this.setState({
+          name,
+          cellphone,
+          detailAddress
+        })
+      }
       this._getAddressLevel(1)
     }, 20)
   }
@@ -178,6 +196,13 @@ class AddressForm extends React.Component {
     } else {
       console.log('not ok')
     }
+  }
+
+  toggleDefault() {
+    const { isSetDefault } = this.state
+    this.setState({
+      isSetDefault: !isSetDefault
+    })
   }
 
   _getAddressLevel(level) {
@@ -301,7 +326,8 @@ class AddressForm extends React.Component {
   _saveAddress(prop) {
     const { name, cellphone, detailAddress, dataLevelOne, indexDataLevelOne, dataCity, indexDataCity, dataDistrict, indexDataDistrict } = this.state
     const provinceCity = dataLevelOne[indexDataLevelOne].locationName + dataCity[indexDataCity].locationName + dataDistrict[indexDataDistrict].locationName
-    const address = new Address(name, cellphone, detailAddress, prop, provinceCity)
+    const addressId = dataDistrict[indexDataDistrict].id
+    const address = new Address(name, cellphone, detailAddress, prop, provinceCity, addressId)
     addAddress(address)
   }
 }
@@ -309,11 +335,11 @@ class AddressForm extends React.Component {
 
 
 AddressForm.propTypes = {
-
+  address: PropTypes.object
 }
 
 AddressForm.defaultProps = {
-
+  address: null
 }
 
 export default AddressForm

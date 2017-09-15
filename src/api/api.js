@@ -316,3 +316,17 @@ export function cacheAddress(id) {
     return Promise.resolve(res.data)
   })
 }
+
+// 查询地址
+export function lookupAddress(addressId) {
+  const url = baseUrl + 'address/mlookupAddress'
+  const params = {
+    addressId
+  }
+
+  return axios.get(url, {
+    params
+  }).then(res => {
+    return Promise.resolve(res.data)
+  })
+}

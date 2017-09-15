@@ -114,6 +114,17 @@
     .setdefault {
       margin-left: 77px;
       margin-top: 8px;
+      i {
+        position: relative;
+        top: -1px;
+      }
+      span {
+        position: relative;
+        top: 2px;
+        color: #666;
+        margin-left: 10px;
+        font-size: 14px;
+      }
     }
   }
   .indexh {

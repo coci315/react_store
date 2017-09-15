@@ -24,7 +24,7 @@ class AddressBox extends React.Component {
             addressList.length ? (
               <AddressDisplay addressList={addressList} />
             ) : (
-                <EmptyAddress />
+                <EmptyAddress onSave={this.onSaveEmptyAddress.bind(this)} />
               )
           }
         </div>
@@ -32,6 +32,13 @@ class AddressBox extends React.Component {
     )
   }
   componentDidMount() {
+    const addressList = loadAddress()
+    this.setState({
+      addressList
+    })
+  }
+
+  onSaveEmptyAddress() {
     const addressList = loadAddress()
     this.setState({
       addressList

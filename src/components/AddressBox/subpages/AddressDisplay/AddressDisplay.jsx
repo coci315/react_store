@@ -10,25 +10,23 @@ class AddressDisplay extends React.Component {
     super(props, context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
-      addressList: []
+      addressList: [],
+      curIndex: 0
     }
   }
   render() {
-    const { addressList } = this.state
-    const defaultAddress = addressList.filter(item => {
-      return item.prop === 1
-    })[0]
-    console.log(defaultAddress)
+    const { addressList, curIndex } = this.state
+    const curAddress = addressList[curIndex]
     return (
       <div className="m-address f-pr">
         <div className="bggray">
           <span>收货信息</span>
         </div>
         {
-          defaultAddress ? (
+          curAddress ? (
             <div className="head">
               {
-                defaultAddress.prop ? (
+                curAddress.prop ? (
                   <span className="f-ib">
                     <i></i>
                     <em>默认地址</em>
@@ -40,25 +38,25 @@ class AddressDisplay extends React.Component {
           ) : ''
         }
         {
-          defaultAddress ? (
+          curAddress ? (
             <div className="msg">
               <span className="f-ib f-thide">
                 <em style={{ letterSpacing: 6 }}>收货人:</em>
-                {defaultAddress.name}
+                {curAddress.name}
               </span>
               <span className="phone f-ib f-thide">
                 <em>联系方式 : </em>
-                {defaultAddress.cellphone}
+                {curAddress.cellphone}
               </span>
             </div>
           ) : ''
         }
         {
-          defaultAddress ? (
+          curAddress ? (
             <div className="address">
               <p className="txt f-thide">
                 <em>收货地址 : </em>
-                {defaultAddress.provinceCity + defaultAddress.detailAddress}
+                {curAddress.provinceCity + curAddress.detailAddress}
               </p>
             </div>
           ) : ''
@@ -69,7 +67,7 @@ class AddressDisplay extends React.Component {
           <a href="javascript:;" className="btn-b f-mgt5 f-blk">新建地址</a>
         </div>
         <BaseLayer ref={(layer) => { this.layerEdit = layer }} title="修改收货地址">
-          <AddressForm />
+          <AddressForm address={curAddress} />
         </BaseLayer>
       </div>
     )
@@ -77,15 +75,23 @@ class AddressDisplay extends React.Component {
 
   componentDidMount() {
     const { addressList } = this.props
+    const curIndex = addressList.findIndex(item => {
+      return item.prop === 1
+    })
     this.setState({
-      addressList
+      addressList,
+      curIndex
     })
   }
 
   componentWillReceiveProps(nextProps) {
     const { addressList } = nextProps
+    const curIndex = addressList.findIndex(item => {
+      return item.prop === 1
+    })
     this.setState({
-      addressList
+      addressList,
+      curIndex
     })
   }
 

@@ -312,15 +312,17 @@ class EmptyAddress extends React.Component {
   _saveAddress(prop) {
     const { name, cellphone, detailAddress, dataLevelOne, indexDataLevelOne, dataCity, indexDataCity, dataDistrict, indexDataDistrict } = this.state
     const provinceCity = dataLevelOne[indexDataLevelOne].locationName + dataCity[indexDataCity].locationName + dataDistrict[indexDataDistrict].locationName
-    const address = new Address(name, cellphone, detailAddress, prop, provinceCity)
+    const addressId = dataDistrict[indexDataDistrict].id
+    const address = new Address(name, cellphone, detailAddress, prop, provinceCity, addressId)
     addAddress(address)
+    this.props.onSave && this.props.onSave()
   }
 }
 
 
 
 EmptyAddress.propTypes = {
-
+  onSave: PropTypes.func
 }
 
 EmptyAddress.defaultProps = {
