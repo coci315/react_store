@@ -67,7 +67,9 @@ class AddressDisplay extends React.Component {
           <a href="javascript:;" className="btn-b f-mgt5 f-blk">新建地址</a>
         </div>
         <BaseLayer ref={(layer) => { this.layerEdit = layer }} title="修改收货地址">
-          <AddressForm address={curAddress} />
+          <AddressForm address={curAddress}
+            onSave={this.saveHandleOnAddrForm.bind(this)}
+            onCancel={this.cancelHandleOnAddrForm.bind(this)} />
         </BaseLayer>
       </div>
     )
@@ -98,10 +100,20 @@ class AddressDisplay extends React.Component {
   clickHandleOnEdit() {
     this.layerEdit.show()
   }
+
+  cancelHandleOnAddrForm() {
+    this.layerEdit.hide()
+  }
+
+  saveHandleOnAddrForm() {
+    this.layerEdit.hide()
+    this.props.onSave && this.props.onSave()
+  }
 }
 
 AddressDisplay.propTypes = {
-  addressList: PropTypes.array
+  addressList: PropTypes.array,
+  onSave: PropTypes.func
 }
 
 AddressDisplay.defaultProps = {

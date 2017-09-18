@@ -22,7 +22,9 @@ class AddressBox extends React.Component {
         <div className="m-address-front">
           {
             addressList.length ? (
-              <AddressDisplay addressList={addressList} />
+              <AddressDisplay addressList={addressList}
+                onSave={this.onSaveEmptyAddress.bind(this)}
+              />
             ) : (
                 <EmptyAddress onSave={this.onSaveEmptyAddress.bind(this)} />
               )

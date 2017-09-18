@@ -2,8 +2,8 @@ import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import PropTypes from 'prop-types'
 import Select from '../../../../components/Select/Select'
-import { getAddressLevel, getNextAddress, saveAddress, cacheAddress } from '../../../../api/api.js'
-import { loadAddress, addAddress } from '../../../../common/js/cache.js'
+import { getAddressLevel, getNextAddress, saveAddress, cacheAddress, lookupAddress } from '../../../../api/api.js'
+import { loadAddress, addAddress, editAddress } from '../../../../common/js/cache.js'
 import { Address } from '../../../../common/js/address.js'
 
 import './style.scss'
@@ -121,6 +121,9 @@ class AddressForm extends React.Component {
             className="u-btn-new u-btn-new160"
             onClick={this.clickHandleOnSaveBtn.bind(this)}
           >保存新地址</a>
+          <a href="javascript:;" className="u-btn-hide"
+            onClick={this.clickHandleOnCancelBtn.bind(this)}
+          >取消</a>
         </div>
       </form>
     )
@@ -131,14 +134,16 @@ class AddressForm extends React.Component {
       const { address } = this.props
       if (address) {
         console.log(address)
-        const { cellphone, detailAddress, name } = address
+        const { cellphone, detailAddress, name, addressId } = address
         this.setState({
           name,
           cellphone,
           detailAddress
         })
+        this._lookupAddress(addressId)
+      } else {
+        this._getAddressLevel(1)
       }
-      this._getAddressLevel(1)
     }, 20)
   }
 
@@ -192,16 +197,35 @@ class AddressForm extends React.Component {
     const isAddressValid = this._checkAddress()
     if (isNameValid && isPhoneValid && isAddressValid) {
       console.log('ok')
-      this._saveAddress(1)
+      this._editAddress()
+      this.props.onSave && this.props.onSave()
     } else {
       console.log('not ok')
     }
+  }
+
+  clickHandleOnCancelBtn() {
+    this.props.onCancel && this.props.onCancel()
   }
 
   toggleDefault() {
     const { isSetDefault } = this.state
     this.setState({
       isSetDefault: !isSetDefault
+    })
+  }
+
+  _lookupAddress(addressId) {
+    lookupAddress(addressId).then(res => {
+      console.log(res)
+      const dataLevelOne = res.data[1]
+      const dataCity = res.data[2]
+      const dataDistrict = res.data[3]
+      this.setState({
+        dataLevelOne,
+        dataCity,
+        dataDistrict
+      })
     })
   }
 
@@ -323,19 +347,27 @@ class AddressForm extends React.Component {
   //   })
   // }
 
-  _saveAddress(prop) {
-    const { name, cellphone, detailAddress, dataLevelOne, indexDataLevelOne, dataCity, indexDataCity, dataDistrict, indexDataDistrict } = this.state
+  _editAddress() {
+    const { address } = this.props
+    const { name, cellphone, detailAddress, dataLevelOne, indexDataLevelOne, dataCity, indexDataCity, dataDistrict, indexDataDistrict, isSetDefault } = this.state
     const provinceCity = dataLevelOne[indexDataLevelOne].locationName + dataCity[indexDataCity].locationName + dataDistrict[indexDataDistrict].locationName
     const addressId = dataDistrict[indexDataDistrict].id
-    const address = new Address(name, cellphone, detailAddress, prop, provinceCity, addressId)
-    addAddress(address)
+    const prop = +isSetDefault
+    const newAddr = { name, cellphone, detailAddress, provinceCity, addressId }
+    if (!address.prop) {
+      newAddr.prop = prop
+    }
+    const newAddress = Object.assign(address, newAddr)
+    editAddress(newAddress)
   }
 }
 
 
 
 AddressForm.propTypes = {
-  address: PropTypes.object
+  address: PropTypes.object,
+  onCancel: PropTypes.func,
+  onSave: PropTypes.func
 }
 
 AddressForm.defaultProps = {

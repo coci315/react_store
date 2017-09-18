@@ -76,3 +76,19 @@ export function delAddress(item) {
     saveToLocal('address-list', addressList)
   }
 }
+
+export function editAddress(newAddress) {
+  let addressList = loadAddress()
+  const index = addressList.findIndex(addr => {
+    return addr.id === newAddress.id
+  })
+  if (index > -1) {
+    if (newAddress.prop) {
+      addressList.forEach(item => {
+        item.prop = 0
+      })
+    }
+    addressList[index] = newAddress
+    saveToLocal('address-list', addressList)
+  }
+}
