@@ -299,6 +299,19 @@
 		width: 140px;
 	}
 
+	.u-btn-new3 {
+		display: inline-block;
+		text-align: center;
+		width: 138px;
+		height: 38px;
+		background-color: #fff;
+		color: #333;
+		border: 1px solid rgba(0, 0, 0, 0.15);
+		&:hover {
+			color: #333;
+		}
+	}
+
 	.u-btn-new160 {
 		width: 160px;
 	}

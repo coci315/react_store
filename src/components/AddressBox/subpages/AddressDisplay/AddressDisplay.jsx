@@ -3,6 +3,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 import PropTypes from 'prop-types'
 import BaseLayer from '../../../BaseLayer/BaseLayer'
 import AddressForm from '../AddressForm/AddressForm'
+import AddressChange from '../AddressChange/AddressChange'
 
 import './style.scss'
 class AddressDisplay extends React.Component {
@@ -63,13 +64,21 @@ class AddressDisplay extends React.Component {
         }
         <div className="line f-pa"></div>
         <div className="modify f-pa">
-          <a href="javascript:;" className="s-fcff f-blk">更换收货地址</a>
+          <a href="javascript:;" className="s-fcff f-blk"
+            onClick={this.clickHandleOnChange.bind(this)}
+          >更换收货地址</a>
           <a href="javascript:;" className="btn-b f-mgt5 f-blk">新建地址</a>
         </div>
         <BaseLayer ref={(layer) => { this.layerEdit = layer }} title="修改收货地址">
           <AddressForm address={curAddress}
             onSave={this.saveHandleOnAddrForm.bind(this)}
             onCancel={this.cancelHandleOnAddrForm.bind(this)} />
+        </BaseLayer>
+        <BaseLayer ref={(layer) => { this.layerChange = layer }} title="更换收货地址">
+          <AddressChange addressList={addressList}
+            onCancel={this.cancelHandleOnAddrChange.bind(this)}
+            onConfirm={this.confirmHandleOnAddrChange.bind(this)}
+          />
         </BaseLayer>
       </div>
     )
@@ -101,13 +110,28 @@ class AddressDisplay extends React.Component {
     this.layerEdit.show()
   }
 
+  clickHandleOnChange() {
+    this.layerChange.show()
+  }
+
   cancelHandleOnAddrForm() {
     this.layerEdit.hide()
+  }
+
+  cancelHandleOnAddrChange() {
+    this.layerChange.hide()
   }
 
   saveHandleOnAddrForm() {
     this.layerEdit.hide()
     this.props.onSave && this.props.onSave()
+  }
+
+  confirmHandleOnAddrChange(selectIndex) {
+    this.layerChange.hide()
+    this.setState({
+      curIndex: selectIndex
+    })
   }
 }
 

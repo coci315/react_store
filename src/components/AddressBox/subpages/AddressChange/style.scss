@@ -1,0 +1,47 @@
+.g-addrbox {
+  height: 300px;
+  margin: 10px auto;
+  overflow-y: auto;
+  li {
+    width: 608px;
+    height: 120px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid #f4f4f4;
+    margin-bottom: 10px;
+    &.z-sel {
+      width: 604px;
+      height: 117px;
+      position: relative;
+      border: 2px solid #d33a31;
+    }
+  }
+  li+li {
+    border-top: none;
+  }
+  .m-ite {
+    margin-top: 20px;
+  }
+  .itm {
+    height: 30px;
+    font-size: 14px;
+    color: #333;
+    em {
+      width: 445px;
+      color: #333;
+    }
+  }
+  .des {
+    width: 70px;
+    margin-right: 10px;
+    text-align: right;
+    color: #999;
+  }
+  .default {
+    top: 59px;
+    right: 20px;
+    padding: 1px 2px;
+    border: 1px solid #d33a31;
+    color: #d33a31;
+  }
+}
